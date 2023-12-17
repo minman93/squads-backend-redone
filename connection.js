@@ -3,6 +3,7 @@ const ENV = process.env.NODE_ENV || "development";
 const seasons = require("./season-data");
 const clubs = require("./club-data");
 
+
 require("dotenv").config({
   path: `${__dirname}/./.env.${ENV}`,
 });
