@@ -20,7 +20,7 @@ const seedData = async () => {
       )`;
   const dropClubs = "DROP TABLE IF EXISTS clubs CASCADE";
   const createClubs = `CREATE TABLE clubs (
-    id SERIAL PRIMARY KEY, name VARCHAR(50), badge VARCHAR(100), primary_colour VARCHAR(10), secondary_colour VARCHAR(10)
+    id SERIAL PRIMARY KEY, name VARCHAR(50), badge VARCHAR(500), primary_colour VARCHAR(10), secondary_colour VARCHAR(10)
   )`;
 
   await pool.query(dropSeasons);
