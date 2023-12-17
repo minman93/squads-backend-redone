@@ -1,8 +1,7 @@
 const { Pool } = require("pg");
 const ENV = process.env.NODE_ENV || "development";
 const seasons = require("./season-data");
-const readClubsFromCSV = require("./club-data");
-const clubsFilePath = require("./club-data.csv");
+const clubs = require("./club-data");
 
 require("dotenv").config({
   path: `${__dirname}/./.env.${ENV}`,
@@ -36,7 +35,6 @@ class Season {
   }
 
   static async insertAllSeasons() {
-    const clubs = await readClubsFromCSV(clubsFilePath);
     for (const season of seasons) {
       const query = "INSERT INTO seasons (name) VALUES ($1)";
       const values = [season];
