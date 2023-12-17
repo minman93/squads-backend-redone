@@ -57,4 +57,4 @@ if (!process.env.PGDATABASE && !process.env.DATABASE_URL) {
   }
 })();
 
-module.exports = pool(config);
+module.exports = pool;
