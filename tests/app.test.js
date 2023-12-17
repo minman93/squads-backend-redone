@@ -25,5 +25,19 @@ describe("app", () => {
           expect(Array.isArray(body.seasons));
         });
     });
+    describe("returns all CLUBS with a GET CLUBS request", () => {
+      test("returns an array of all clubs complete with names, IDs, colour codes and badges", () => {
+        return request(app)
+          .get("/api/clubs")
+          .then(({ body }) => {
+            expect(body.clubs[0]).toHaveProperty("name");
+            expect(body.clubs[0]).toHaveProperty("badge");
+            expect(body.clubs[0]).toHaveProperty("primary_colour");
+            expect(body.clubs[0]).toHaveProperty("secondary_colour");
+
+            expect(Array.isArray(body.clubs));
+          });
+      });
+    });
   });
 });

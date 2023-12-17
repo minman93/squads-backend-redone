@@ -7,3 +7,12 @@ exports.fetchSeasons = () => {
     return seasons.rows;
   });
 };
+
+
+exports.fetchClubs = () => {
+  const queryString = `SELECT * FROM clubs;`;
+  return db.query(queryString).then((clubs) => {
+    console.log(clubs.rows);
+    return clubs.rows;
+  });
+};
