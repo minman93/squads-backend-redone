@@ -1,7 +1,7 @@
 const { Pool } = require("pg");
 const ENV = process.env.NODE_ENV || "development";
 const seasons = require("./season-data");
-const clubs = require("./club-data");
+const readClubs = require("./club-data");
 
 require("dotenv").config({
   path: `${__dirname}/./.env.${ENV}`,
@@ -57,22 +57,30 @@ class Club {
     this.primaryColour = pc;
     this.secondaryColour = sc;
   }
+
   static async insertAllClubs() {
-    for (const club of clubs) {
-      const query =
-        "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES ($1, $2, $3, $4)";
-      const values = [
-        club.name,
-        club.badge,
-        club.primaryColour,
-        club.secondaryColour,
-      ];
-      try {
+    try {
+      // Call the readClubs function to get the clubs array
+      const clubsArray = await readClubs();
+
+      // Loop over each club in the array
+      for (const club of clubsArray) {
+        // Extract necessary information for each club
+        const { name, badge, primary_colour, secondary_colour } = club;
+
+        // Use the extracted information to insert into the database
+        const query =
+          "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES ($1, $2, $3, $4)";
+        const values = [name, badge, primary_colour, secondary_colour];
+
+        // Use the pool.query method to interact with the database
         await pool.query(query, values);
-        console.log(`Inserted season: ${club}`);
-      } catch (error) {
-        console.error("Error inserting club:", error);
+        console.log(`Inserted club: ${name}`);
       }
+
+      console.log("All clubs inserted successfully");
+    } catch (error) {
+      console.error("Error inserting clubs:", error);
     }
   }
 }
