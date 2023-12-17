@@ -1,11 +1,8 @@
 const express = require("express");
-
-const { PORT = 9090 } = process.env;
-
 const app = express();
+app.use(express.json());
+const { getWelcomeMessage } = require("./controller");
 
-app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
+app.get("/api", getWelcomeMessage);
 
-app.get("/api", (req, res) => {
-  res.send("Hello World!");
-});
+module.exports = app;
