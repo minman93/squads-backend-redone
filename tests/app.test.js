@@ -16,4 +16,14 @@ describe("app", () => {
         });
     });
   });
+  describe("returns all SEASONS with a GET SEASONS request", () => {
+    test("returns an array of all seasons in Premier League history from 1993/1994 up to 2023/2024", () => {
+      return request(app)
+        .get("/api/seasons")
+        .then(({ body }) => {
+          expect(body.seasons[0]).toHaveProperty("season");
+          expect(Array.isArray(body.seasons));
+        });
+    });
+  });
 });
