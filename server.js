@@ -1,14 +1,7 @@
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const graphql = require("graphql");
-const { Client } = require("pg");
-const client = new Client({
-  host: "localhost",
-  user: "{YOUR_POSTGRES_USERNAME}",
-  password: "{YOUR_POSTGRES_PASSWORD}",
-  database: "{YOUR_POSTGRES_DATABASE}",
-});
-client.connect();
+const { PORT = 9090 } = process.env;
 
 const QueryRoot = new graphql.GraphQLObjectType({
   name: "Query",
@@ -30,4 +23,4 @@ app.use(
     graphiql: true,
   })
 );
-app.listen(3000);
+app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
