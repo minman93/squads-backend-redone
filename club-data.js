@@ -36,4 +36,3 @@ readClubs();
 
 // If you want to use the clubs array in another file, you can export it
 module.exports = readClubs;
-console.log(readClubs);
