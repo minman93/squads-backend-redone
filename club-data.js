@@ -27,4 +27,4 @@ readClubsFromCSV(clubsFilePath)
     console.error(error);
   });
 
-module.exports = readClubsFromCSV(clubsFilePath);
+module.exports = readClubsFromCSV;
