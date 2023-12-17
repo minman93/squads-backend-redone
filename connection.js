@@ -79,6 +79,7 @@ if (!process.env.PGDATABASE && !process.env.DATABASE_URL) {
   try {
     await seedData();
     await Season.insertAllSeasons();
+    await Club.insertAllClubs();
   } catch (error) {
     console.error("Error in main block:", error);
   }
