@@ -63,11 +63,11 @@ class Club {
       const clubsArray = await readClubs();
 
       for (const club of clubsArray) {
-        const { name, badge, primaryColour, secondaryColour } = club;
+        const { name, badge, primary_colour, secondary_colour } = club;
 
         const query =
           "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES ($1, $2, $3, $4)";
-        const values = [name, badge, primaryColour, secondaryColour];
+        const values = [name, badge, primary_colour, secondary_colour];
 
         await pool.query(query, values);
         console.log(`Inserted club: ${name}`);
