@@ -19,11 +19,10 @@ const readClubsFromCSV = () => {
   });
 };
 
-// Use an async function to directly await the promise
+
 const readClubs = async () => {
   try {
     const clubs = await readClubsFromCSV();
-    console.log(clubs); // Now you have the clubs array here
     return clubs;
   } catch (error) {
     console.error(error);
@@ -31,8 +30,7 @@ const readClubs = async () => {
   }
 };
 
-// Call the async function
 readClubs();
 
-// If you want to use the clubs array in another file, you can export it
+
 module.exports = readClubs;
