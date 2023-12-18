@@ -1,10 +1,10 @@
 id,name,badge,primary_colour,secondary_colour
-1,Arsenal,https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png,#EF0107,#FFFFFF
-2,Aston Villa,https://1000logos.net/wp-content/uploads/2022/05/Aston-Villa-Logo.png,#670E36,#95BFE5
+1,Arsenal,https://cdn.freebiesupply.com/logos/large/2x/arsenal-logo-png-transparent.png,#EF0107,#FFFFFF
+2,Aston Villa,https://1000logos.net/wp-content/uploads/2022/05/Aston-Villa-Logo-2016.png,#670E36,#95BFE5
 3,Barnsley,https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Barnsley_FC.svg/1200px-Barnsley_FC.svg.png,#D71921,#000000
 4,Birmingham City,https://upload.wikimedia.org/wikipedia/en/thumb/6/68/Birmingham_City_FC_logo.svg/1200px-Birmingham_City_FC_logo.svg.png,#0000FF,#FFFFFF
 5,Blackburn Rovers,https://upload.wikimedia.org/wikipedia/en/thumb/0/0f/Blackburn_Rovers.svg/1200px-Blackburn_Rovers.svg.png,#009EE0,#FFFFFF
-6,Blackpool,https://static.wikia.nocookie.net/logopedia/images/0/0f/Blackpool_FC_logo_%28on_tangerine_disc%29.png/revision/latest?cb=20210901105403,#F68712,#000000
+6,Blackpool,https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Blackpool_FC_logo.svg/1200px-Blackpool_FC_logo.svg.png,#F68712,#000000
 7,Bolton Wanderers,https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Bolton_Wanderers_FC_logo.svg/1200px-Bolton_Wanderers_FC_logo.svg.png,#FFFFFF,#00194A
 8,Bournemouth,https://upload.wikimedia.org/wikipedia/en/thumb/e/e5/AFC_Bournemouth_%282013%29.svg/1200px-AFC_Bournemouth_%282013%29.svg.png,#DA291C,#000000
 9,Bradford City,https://i.pinimg.com/originals/61/e6/b0/61e6b06277214ad2bd43b30ee32453b7.png,#fbb800,#D11524
@@ -43,7 +43,7 @@ id,name,badge,primary_colour,secondary_colour
 42,Sunderland,https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/1200px-Logo_Sunderland.svg.png,#DD0000,#FFFFFF
 43,Swansea City,https://i2-prod.walesonline.co.uk/incoming/article24182057.ece/ALTERNATES/s1200c/0_Swansea-City-22-23-Badge-Blue.png,#FFFFFF,#000000
 44,Swindon Town,https://upload.wikimedia.org/wikipedia/en/a/a3/Swindon_Town_FC.svg,#dc161b,#ffffff
-45,Tottenham Hotspur,https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Tottenham_Hotspur.svg/1200px-Tottenham_Hotspur.svg.png,#FFFFFF,#132257
+45,Tottenham Hotspur,https://www.toptacular.co.uk/wp-content/uploads/2019/09/Tottenham-Badge-200mm-Wafer-Cake.png,#FFFFFF,#132257
 46,Watford,https://upload.wikimedia.org/wikipedia/en/e/e2/Watford.svg,FBEE23,#11210C
 47,West Bromwich Albion,https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/West_Bromwich_Albion.svg/1200px-West_Bromwich_Albion.svg.png,#122F67,#FFFFFF
 48,West Ham United,https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/West_Ham_United_FC_logo.svg/1200px-West_Ham_United_FC_logo.svg.png,#7A263A,#1BB1E7
