@@ -60,20 +60,15 @@ class Club {
 
   static async insertAllClubs() {
     try {
-      // Call the readClubs function to get the clubs array
       const clubsArray = await readClubs();
 
-      // Loop over each club in the array
       for (const club of clubsArray) {
-        // Extract necessary information for each club
-        const { name, badge, primary_colour, secondary_colour } = club;
+        const { name, badge, primaryColour, secondaryColour } = club;
 
-        // Use the extracted information to insert into the database
         const query =
           "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES ($1, $2, $3, $4)";
         const values = [name, badge, primary_colour, secondary_colour];
 
-        // Use the pool.query method to interact with the database
         await pool.query(query, values);
         console.log(`Inserted club: ${name}`);
       }
