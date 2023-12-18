@@ -67,7 +67,7 @@ class Club {
 
         const query =
           "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES ($1, $2, $3, $4)";
-        const values = [name, badge, primary_colour, secondary_colour];
+        const values = [name, badge, primaryColour, secondaryColour];
 
         await pool.query(query, values);
         console.log(`Inserted club: ${name}`);
