@@ -1,8 +1,8 @@
 const { Pool } = require("pg");
 const ENV = process.env.NODE_ENV || "development";
-const seasons = require("./season-data");
-const readClubs = require("./club-data");
-const readPlayers = require("./player-data");
+const seasons = require("./data/js/season-data");
+const readClubs = require("./data/js/club-data");
+const readPlayers = require("./data/js/player-data");
 
 require("dotenv").config({
   path: `${__dirname}/./.env.${ENV}`,
