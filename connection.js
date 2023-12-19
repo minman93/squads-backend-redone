@@ -110,10 +110,9 @@ const insertAllCareerEntries = async () => {
       await pool.query(query, values);
     }
   } catch (error) {
-    console.error("Error inserting players:", error);
+    console.error("Error inserting career entries:", error);
   }
 };
-
 
 if (!process.env.PGDATABASE && !process.env.DATABASE_URL) {
   throw new Error("PGDATABASE or DATABASE_URL not set");
@@ -125,6 +124,7 @@ if (!process.env.PGDATABASE && !process.env.DATABASE_URL) {
     await insertAllSeasons();
     await insertAllClubs();
     await insertAllPlayers();
+    await insertAllCareerEntries();
   } catch (error) {
     console.error("Error in main block:", error);
   }
