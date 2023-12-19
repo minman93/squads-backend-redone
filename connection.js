@@ -97,7 +97,7 @@ class Player {
         const { name, dob, position, initials, nation } = player;
 
         const query =
-          "INSERT INTO clubs (name, dob, position, initials, nation) VALUES ($1, $2, $3, $4, $5)";
+          "INSERT INTO players (name, dob, position, initials, nation) VALUES ($1, $2, $3, $4, $5)";
         const values = [name, dob, position, initials, nation];
 
         await pool.query(query, values);
