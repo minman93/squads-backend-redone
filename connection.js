@@ -13,6 +13,7 @@ const config =
     ? { connectionString: process.env.DATABASE_URL, max: 2 }
     : {};
 let pool = new Pool(config);
+
 const seedData = async () => {
   const dropSeasons = "DROP TABLE IF EXISTS seasons CASCADE";
   const createSeasons = `CREATE TABLE seasons (
@@ -36,96 +37,65 @@ const seedData = async () => {
   await pool.query(createPlayers);
 };
 
-class Season {
-  constructor(season) {
-    this.season = season;
-  }
+const insertAllSeasons = async () => {
+  for (const season of seasons) {
+    const query = "INSERT INTO seasons (name) VALUES ($1)";
+    const values = [season];
 
-  static async insertAllSeasons() {
-    for (const season of seasons) {
-      const query = "INSERT INTO seasons (name) VALUES ($1)";
-      const values = [season];
-
-      try {
-        await pool.query(query, values);
-        console.log(`Inserted season: ${season}`);
-      } catch (error) {
-        console.error("Error inserting season:", error);
-      }
-    }
-
-    console.log("All seasons inserted successfully");
-  }
-}
-class Club {
-  constructor(name, badge, pc, sc) {
-    this.name = name;
-    this.badge = badge;
-    this.primaryColour = pc;
-    this.secondaryColour = sc;
-  }
-
-  static async insertAllClubs() {
     try {
-      const clubsArray = await readClubs();
-
-      for (const club of clubsArray) {
-        const { name, badge, primary_colour, secondary_colour } = club;
-
-        const query =
-          "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES ($1, $2, $3, $4)";
-        const values = [name, badge, primary_colour, secondary_colour];
-
-        await pool.query(query, values);
-        console.log(`Inserted club: ${name}`);
-      }
-
-      console.log("All clubs inserted successfully");
+      await pool.query(query, values);
     } catch (error) {
-      console.error("Error inserting clubs:", error);
+      console.error("Error inserting season:", error);
     }
   }
-}
-class Player {
-  constructor(name, dob, position, initials, nation) {
-    this.name = name;
-    this.dob = dob;
-    this.position = position;
-    this.initials = initials;
-    this.nation = nation;
-  }
+};
 
-  static async insertAllPlayers() {
-    try {
-      const playersArray = await readPlayers();
+const insertAllClubs = async () => {
+  try {
+    const clubsArray = await readClubs();
 
-      for (const player of playersArray) {
-        const { name, dob, position, initials, nation } = player;
+    for (const club of clubsArray) {
+      const { name, badge, primary_colour, secondary_colour } = club;
 
-        const query =
-          "INSERT INTO players (name, dateofbirth, position, initials, nation) VALUES ($1, $2, $3, $4, $5)";
-        const values = [name, dob, position, initials, nation];
+      const query =
+        "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES ($1, $2, $3, $4)";
+      const values = [name, badge, primary_colour, secondary_colour];
 
-        await pool.query(query, values);
-        console.log(`Inserted player: ${name}`);
-      }
-
-      console.log("All players inserted successfully");
-    } catch (error) {
-      console.error("Error inserting players:", error);
+      await pool.query(query, values);
     }
+  } catch (error) {
+    console.error("Error inserting clubs:", error);
   }
-}
+};
+
+const insertAllPlayers = async () => {
+  try {
+    const playersArray = await readPlayers();
+
+    for (const player of playersArray) {
+      const { name, dob, position, initials, nation } = player;
+
+      const query =
+        "INSERT INTO players (name, dateofbirth, position, initials, nation) VALUES ($1, $2, $3, $4, $5)";
+      const values = [name, dob, position, initials, nation];
+
+      await pool.query(query, values);
+    }
+  } catch (error) {
+    console.error("Error inserting players:", error);
+  }
+};
 
 if (!process.env.PGDATABASE && !process.env.DATABASE_URL) {
   throw new Error("PGDATABASE or DATABASE_URL not set");
 }
+
 (async () => {
   try {
     await seedData();
-    await Season.insertAllSeasons();
-    await Club.insertAllClubs();
-    await Player.insertAllPlayers();
+    await insertAllSeasons();
+    await insertAllClubs();
+    await insertAllPlayers();
   } catch (error) {
     console.error("Error in main block:", error);
   }
