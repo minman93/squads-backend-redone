@@ -13,3 +13,11 @@ exports.fetchClubs = () => {
     return clubs.rows;
   });
 };
+
+exports.fetchPlayers = () => {
+  const queryString = `SELECT * FROM players;`;
+  return db.query(queryString).then((players) => {
+    return players.rows;
+  });
+};
+
