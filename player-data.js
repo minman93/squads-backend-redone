@@ -4,14 +4,14 @@ const playersFilePath = "./player-data.csv";
 
 const readPlayersFromCSV = () => {
   return new Promise((resolve, reject) => {
-    const clubs = [];
+    const players = [];
     fs.createReadStream(playersFilePath)
       .pipe(csv())
       .on("data", (row) => {
-        clubs.push(row);
+        players.push(row);
       })
       .on("end", () => {
-        resolve(clubs);
+        resolve(players);
       })
       .on("error", (error) => {
         reject(error);
@@ -22,7 +22,6 @@ const readPlayersFromCSV = () => {
 const readPlayers = async () => {
   try {
     const players = await readPlayersFromCSV();
-    console.log(players);
     return players;
   } catch (error) {
     console.error(error);
