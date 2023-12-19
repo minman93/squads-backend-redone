@@ -94,7 +94,7 @@ class Player {
       const playersArray = await readPlayers();
 
       for (const player of playersArray) {
-        const { name, dob, position, initials, nation } = club;
+        const { name, dob, position, initials, nation } = player;
 
         const query =
           "INSERT INTO clubs (name, dob, position, initials, nation) VALUES ($1, $2, $3, $4, $5)";
