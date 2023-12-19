@@ -15,7 +15,7 @@ app.get("/api", getWelcomeMessage);
 app.get("/api/seasons", getSeasons);
 app.get("/api/clubs", getClubs);
 app.get("/api/players", getPlayers);
-app.get("api/career_entries", getCareerEntries);
+app.get("/api/career-entries", getCareerEntries);
 
 
 
