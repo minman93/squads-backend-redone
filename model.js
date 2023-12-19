@@ -26,13 +26,13 @@ exports.fetchCareerEntries = () => {
     return careerEntries.rows;
   });
 };
-exports.fetchSeasonByName = (name) => {
-  const queryString = `SELECT * FROM seasons WHERE name = $1`;
-  return db.query(queryString, name).then((season) => {
-    if (name.rows.length === 0) {
+exports.fetchSeasonByName = (id) => {
+  const queryString = `SELECT * FROM seasons WHERE id = $1`;
+  return db.query(queryString, [id]).then((id) => {
+    if (id.rows.length === 0) {
       return Promise.reject({ status: 404, msg: "Path not found" });
     }
-    return season.rows;
+    return id.rows;
   });
 };
 
