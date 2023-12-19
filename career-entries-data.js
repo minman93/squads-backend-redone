@@ -8,7 +8,7 @@ const readCareerEntriesFromCSV = () => {
     fs.createReadStream(careerEntriesFilePath)
       .pipe(csv())
       .on("data", (row) => {
-        players.push(row);
+        careerEntries.push(row);
       })
       .on("end", () => {
         resolve(careerEntries);
