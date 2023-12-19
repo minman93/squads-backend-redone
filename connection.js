@@ -35,7 +35,7 @@ const seedData = async () => {
     player_id INT REFERENCES players(id),
     squad_number INT,
     club_id INT REFERENCES clubs(id),
-    season_id INT REFERENCES seasons(id), image_url VARCHAR(500)`;
+    season_id INT REFERENCES seasons(id), image_url VARCHAR(500) )`;
 
   await pool.query(dropSeasons);
   await pool.query(dropClubs);
