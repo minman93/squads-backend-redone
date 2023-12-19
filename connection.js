@@ -3,6 +3,7 @@ const ENV = process.env.NODE_ENV || "development";
 const seasons = require("./season-data");
 const readClubs = require("./club-data");
 const readPlayers = require("./player-data");
+const readCareerEntries = require("./career-entries-data");
 
 require("dotenv").config({
   path: `${__dirname}/./.env.${ENV}`,
@@ -28,6 +29,13 @@ const seedData = async () => {
   const createPlayers = `CREATE TABLE players (
     id SERIAL PRIMARY KEY, name VARCHAR(100), dateofbirth VARCHAR(15), position VARCHAR(20), initials VARCHAR(10), nation VARCHAR(30)
   )`;
+  const dropCareerEntries = "DROP TABLE IF EXISTS career_entries CASCADE";
+  const createCareerEntries = `CREATE TABLE career_entries (
+    id SERIAL PRIMARY KEY,
+    player_id INT REFERENCES players(id),
+    squad_number INT,
+    club_id INT REFERENCES clubs(id),
+    season_id INT REFERENCES seasons(id), image_url VARCHAR(500)`;
 
   await pool.query(dropSeasons);
   await pool.query(dropClubs);
@@ -35,6 +43,8 @@ const seedData = async () => {
   await pool.query(createSeasons);
   await pool.query(createClubs);
   await pool.query(createPlayers);
+  await pool.query(dropCareerEntries);
+  await pool.query(createCareerEntries);
 };
 
 const insertAllSeasons = async () => {
@@ -85,6 +95,25 @@ const insertAllPlayers = async () => {
     console.error("Error inserting players:", error);
   }
 };
+const insertAllCareerEntries = async () => {
+  try {
+    const careerEntriesArray = await readCareerEntries();
+
+    for (const careerEntry of careerEntriesArray) {
+      const { player_id, squad_number, club_id, season_id, image_url } =
+        careerEntry;
+
+      const query =
+        "INSERT INTO players (player_id, squad_number, club_id, season_id, image_url) VALUES ($1, $2, $3, $4, $5)";
+      const values = [player_id, squad_number, club_id, season_id, image_url];
+
+      await pool.query(query, values);
+    }
+  } catch (error) {
+    console.error("Error inserting players:", error);
+  }
+};
+
 
 if (!process.env.PGDATABASE && !process.env.DATABASE_URL) {
   throw new Error("PGDATABASE or DATABASE_URL not set");
