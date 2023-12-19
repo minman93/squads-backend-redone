@@ -1,8 +1,8 @@
 const fs = require("fs");
 const csv = require("csv-parser");
-const playersFilePath = "./club-data.csv";
+const playersFilePath = "./player-data.csv";
 
-const readClubsFromCSV = () => {
+const readPlayersFromCSV = () => {
   return new Promise((resolve, reject) => {
     const clubs = [];
     fs.createReadStream(playersFilePath)
@@ -21,8 +21,9 @@ const readClubsFromCSV = () => {
 
 const readPlayers = async () => {
   try {
-    const clubs = await readPlayersFromCSV();
-    return clubs;
+    const players = await readPlayersFromCSV();
+    console.log(players);
+    return players;
   } catch (error) {
     console.error(error);
     return [];
@@ -32,3 +33,5 @@ const readPlayers = async () => {
 readPlayers();
 
 module.exports = readPlayers;
+
+

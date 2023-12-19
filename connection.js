@@ -2,6 +2,7 @@ const { Pool } = require("pg");
 const ENV = process.env.NODE_ENV || "development";
 const seasons = require("./season-data");
 const readClubs = require("./club-data");
+const readPlayers = require("./player-data");
 
 require("dotenv").config({
   path: `${__dirname}/./.env.${ENV}`,
@@ -79,6 +80,36 @@ class Club {
     }
   }
 }
+class Player {
+  constructor(name, dob, position, initials, nation) {
+    this.name = name;
+    this.dob = dob;
+    this.position = position;
+    this.initials = initials;
+    this.nation = nation;
+  }
+
+  static async insertAllPlayers() {
+    try {
+      const playersArray = await readPlayers();
+
+      for (const player of playersArray) {
+        const { name, dob, position, initials, nation } = club;
+
+        const query =
+          "INSERT INTO clubs (name, dob, position, initials, nation) VALUES ($1, $2, $3, $4, $5)";
+        const values = [name, dob, position, initials, nation];
+
+        await pool.query(query, values);
+        console.log(`Inserted player: ${name}`);
+      }
+
+      console.log("All players inserted successfully");
+    } catch (error) {
+      console.error("Error inserting players:", error);
+    }
+  }
+}
 
 if (!process.env.PGDATABASE && !process.env.DATABASE_URL) {
   throw new Error("PGDATABASE or DATABASE_URL not set");
@@ -88,6 +119,7 @@ if (!process.env.PGDATABASE && !process.env.DATABASE_URL) {
     await seedData();
     await Season.insertAllSeasons();
     await Club.insertAllClubs();
+    await Player.insertAllPlayers();
   } catch (error) {
     console.error("Error in main block:", error);
   }
