@@ -20,4 +20,10 @@ exports.fetchPlayers = () => {
     return players.rows;
   });
 };
+exports.fetchCareerEntries = () => {
+  const queryString = `SELECT * FROM career_entries;`;
+  return db.query(queryString).then((careerEntries) => {
+    return careerEntries.rows;
+  });
+};
 

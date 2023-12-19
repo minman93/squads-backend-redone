@@ -1,4 +1,9 @@
-const { fetchSeasons, fetchClubs, fetchPlayers } = require("./model");
+const {
+  fetchSeasons,
+  fetchClubs,
+  fetchPlayers,
+  fetchCareerEntries,
+} = require("./model");
 
 exports.getWelcomeMessage = (request, response, next) => {
   response.status(200).send({ message: "Hello World!" });
@@ -19,5 +24,10 @@ exports.getClubs = (request, response, next) => {
 exports.getPlayers = (request, response, next) => {
   fetchPlayers().then((playersArray) => {
     response.status(200).send({ players: playersArray });
+  });
+};
+exports.getCareerEntries = (request, response, next) => {
+  fetchCareerEntries().then((careerEntriesArray) => {
+    response.status(200).send({ careerEntries: careerEntriesArray });
   });
 };
