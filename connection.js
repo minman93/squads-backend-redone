@@ -30,12 +30,7 @@ const seedData = async () => {
     id SERIAL PRIMARY KEY, name VARCHAR(100), dateofbirth VARCHAR(15), position VARCHAR(20), initials VARCHAR(10), nation VARCHAR(30)
   )`;
   const dropCareerEntries = "DROP TABLE IF EXISTS career_entries CASCADE";
-  const createCareerEntries = `CREATE TABLE career_entries (
-    id SERIAL PRIMARY KEY,
-    player_id INT REFERENCES players(id),
-    squad_number INT,
-    club_id INT REFERENCES clubs(id),
-    season_id INT REFERENCES seasons(id), image_url VARCHAR(500) )`;
+  const createCareerEntries = `CREATE TABLE career_entries (id SERIAL PRIMARY KEY, player_id INT REFERENCES players(id), squad_number INT, club_id INT REFERENCES clubs(id), season_id INT REFERENCES seasons(id), image_url VARCHAR(500) )`;
 
   await pool.query(dropSeasons);
   await pool.query(dropClubs);

@@ -4,14 +4,14 @@ const careerEntriesFilePath = "./career-entries-data.csv";
 
 const readCareerEntriesFromCSV = () => {
   return new Promise((resolve, reject) => {
-    const players = [];
+    const careerEntries = [];
     fs.createReadStream(careerEntriesFilePath)
       .pipe(csv())
       .on("data", (row) => {
         players.push(row);
       })
       .on("end", () => {
-        resolve(players);
+        resolve(careerEntries);
       })
       .on("error", (error) => {
         reject(error);
