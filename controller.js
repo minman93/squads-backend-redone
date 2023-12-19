@@ -3,6 +3,7 @@ const {
   fetchClubs,
   fetchPlayers,
   fetchCareerEntries,
+  fetchSeasonByName,
 } = require("./model");
 
 exports.getWelcomeMessage = (request, response, next) => {
@@ -31,3 +32,12 @@ exports.getCareerEntries = (request, response, next) => {
     response.status(200).send({ careerEntries: careerEntriesArray });
   });
 };
+exports.getSeasonByName = (request, response, next) => {
+  const name = request.params.name;
+  fetchSeasonByName(name)
+    .then((season) => {
+      response.status.send(season);
+    })
+    .catch(next);
+};
+

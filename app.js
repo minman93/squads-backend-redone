@@ -9,6 +9,7 @@ const {
   getClubs,
   getPlayers,
   getCareerEntries,
+  getSeasonByName,
 } = require("./controller");
 
 app.get("/api", getWelcomeMessage);
@@ -16,7 +17,7 @@ app.get("/api/seasons", getSeasons);
 app.get("/api/clubs", getClubs);
 app.get("/api/players", getPlayers);
 app.get("/api/career-entries", getCareerEntries);
-
+app.get("/api/seasons/:name", getSeasonByName);
 
 
 
