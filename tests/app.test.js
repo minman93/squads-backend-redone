@@ -38,6 +38,21 @@ describe("app", () => {
             expect(Array.isArray(body.clubs));
           });
       });
+      describe("returns all PLAYERS with a GET PLAYERS request", () => {
+        test("returns an array of all clubs complete with names, IDs, positions, nations and initials", () => {
+          return request(app)
+            .get("/api/players")
+            .then(({ body }) => {
+              expect(body.players[0]).toHaveProperty("name");
+              expect(body.players[0]).toHaveProperty("dob");
+              expect(body.players[0]).toHaveProperty("position");
+              expect(body.players[0]).toHaveProperty("nation");
+              expect(body.players[0]).toHaveProperty("initials");
+
+              expect(Array.isArray(body.players));
+            });
+        });
+      });
     });
   });
 });
