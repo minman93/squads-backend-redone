@@ -23,11 +23,17 @@ const seedData = async () => {
   const createClubs = `CREATE TABLE clubs (
     id SERIAL PRIMARY KEY, name VARCHAR(50), badge VARCHAR(500), primary_colour VARCHAR(10), secondary_colour VARCHAR(10)
   )`;
+  const dropPlayers = "DROP TABLE IF EXISTS players CASCADE";
+  const createPlayers = `CREATE TABLE players (
+    id SERIAL PRIMARY KEY, name VARCHAR(100), dateofbirth VARCHAR(15), position VARCHAR(20), initials VARCHAR(10), nation VARCHAR(30)
+  )`;
 
   await pool.query(dropSeasons);
   await pool.query(dropClubs);
+  await pool.query(dropPlayers);
   await pool.query(createSeasons);
   await pool.query(createClubs);
+  await pool.query(createPlayers);
 };
 
 class Season {
@@ -97,7 +103,7 @@ class Player {
         const { name, dob, position, initials, nation } = player;
 
         const query =
-          "INSERT INTO players (name, dob, position, initials, nation) VALUES ($1, $2, $3, $4, $5)";
+          "INSERT INTO players (name, dateofbirth, position, initials, nation) VALUES ($1, $2, $3, $4, $5)";
         const values = [name, dob, position, initials, nation];
 
         await pool.query(query, values);
