@@ -104,7 +104,7 @@ const insertAllCareerEntries = async () => {
         careerEntry;
 
       const query =
-        "INSERT INTO players (player_id, squad_number, club_id, season_id, image_url) VALUES ($1, $2, $3, $4, $5)";
+        "INSERT INTO career_entries (player_id, squad_number, club_id, season_id, image_url) VALUES ($1, $2, $3, $4, $5)";
       const values = [player_id, squad_number, club_id, season_id, image_url];
 
       await pool.query(query, values);
