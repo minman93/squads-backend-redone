@@ -33,8 +33,8 @@ exports.getCareerEntries = (request, response, next) => {
   });
 };
 exports.getSeasonByName = (request, response, next) => {
-  const name = request.params.name;
-  fetchSeasonByName(name)
+  const id = request.params.name;
+  fetchSeasonByName(id)
     .then((season) => {
       response.status.send(season);
     })
