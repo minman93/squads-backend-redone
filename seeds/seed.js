@@ -1,68 +1,71 @@
-const format = require("pg-format");
 const db = require("../connection");
+const format = require("pg-format");
 
 const seed = ({ seasons, clubs, players, careerEntries }) => {
   return db
     .query(`DROP TABLE IF EXISTS career_entries;`)
     .then(() => {
+      console.log("Dropped career_entries table");
       return db.query(`DROP TABLE IF EXISTS players;`);
     })
     .then(() => {
+      console.log("Dropped players table");
       return db.query(`DROP TABLE IF EXISTS clubs;`);
     })
     .then(() => {
+      console.log("Dropped clubs table");
       return db.query(`DROP TABLE IF EXISTS seasons;`);
     })
     .then(() => {
-      const seasonsTablePromise = db.query(`
-        CREATE TABLE seasons (
-          id SERIAL PRIMARY KEY,
-          name VARCHAR(255)
-        );`);
+      console.log("Dropped seasons table");
+      const playersTablePromise = db.query(`
+          CREATE TABLE players (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(100),
+            dateofbirth VARCHAR(15),
+            position VARCHAR(20),
+            initials VARCHAR(10),
+            nation VARCHAR(30)
+          );`);
+      console.log("Created players table");
 
       const clubsTablePromise = db.query(`
-        CREATE TABLE clubs (
-          id SERIAL PRIMARY KEY,
-          name VARCHAR(50),
-          badge VARCHAR(500),
-          primary_colour VARCHAR(10),
-          secondary_colour VARCHAR(10)
-        );`);
+          CREATE TABLE clubs (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(50),
+            badge VARCHAR(500),
+            primary_colour VARCHAR(10),
+            secondary_colour VARCHAR(10)
+          );`);
+      console.log("Created clubs table");
 
-      const playersTablePromise = db.query(`
-        CREATE TABLE players (
-          id SERIAL PRIMARY KEY,
-          name VARCHAR(100),
-          dateofbirth VARCHAR(15),
-          position VARCHAR(20),
-          initials VARCHAR(10),
-          nation VARCHAR(30)
-        );`);
+      const seasonsTablePromise = db.query(`
+          CREATE TABLE seasons (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(255)
+          );`);
+      console.log("Created seasons table");
+
+      const careerEntriesTablePromise = db.query(`
+          CREATE TABLE career_entries (
+            id SERIAL PRIMARY KEY,
+            player_id INT REFERENCES players(id),
+            squad_number INT,
+            club_id INT REFERENCES clubs(id),
+            season_id INT REFERENCES seasons(id),
+            image_url VARCHAR(500)
+          );`);
+      console.log("Created career_entries table");
 
       return Promise.all([
-        seasonsTablePromise,
-        clubsTablePromise,
         playersTablePromise,
+        clubsTablePromise,
+        seasonsTablePromise,
+        careerEntriesTablePromise,
       ]);
     })
     .then(() => {
-      const insertSeasonsQueryStr = format(
-        "INSERT INTO seasons (name) VALUES %L RETURNING *;",
-        seasons.map(({ name }) => [name])
-      );
-      const seasonsPromise = db.query(insertSeasonsQueryStr);
-
-      const insertClubsQueryStr = format(
-        "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES %L RETURNING *;",
-        clubs.map(({ name, badge, primary_colour, secondary_colour }) => [
-          name,
-          badge,
-          primary_colour,
-          secondary_colour,
-        ])
-      );
-      const clubsPromise = db.query(insertClubsQueryStr);
-
+      console.log("Tables created successfully");
       const insertPlayersQueryStr = format(
         "INSERT INTO players (name, dateofbirth, position, initials, nation) VALUES %L RETURNING *;",
         players.map(({ name, dateofbirth, position, initials, nation }) => [
@@ -75,23 +78,26 @@ const seed = ({ seasons, clubs, players, careerEntries }) => {
       );
       const playersPromise = db.query(insertPlayersQueryStr);
 
-      return Promise.all([seasonsPromise, clubsPromise, playersPromise]);
-    })
-    .then(() => {
-      const formattedCareerEntries = careerEntries.map((entry) => {
-        // Adjust this mapping based on the actual structure of your careerEntries data
-        return {
-          player_id: entry.player_id,
-          squad_number: entry.squad_number,
-          club_id: entry.club_id,
-          season_id: entry.season_id,
-          image_url: entry.image_url,
-        };
-      });
+      const insertClubsQueryStr = format(
+        "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES %L RETURNING *;",
+        clubs.map(({ name, badge, primary_colour, secondary_colour }) => [
+          name,
+          badge,
+          primary_colour,
+          secondary_colour,
+        ])
+      );
+      const clubsPromise = db.query(insertClubsQueryStr);
+
+      const insertSeasonsQueryStr = format(
+        "INSERT INTO seasons (name) VALUES %L RETURNING *;",
+        seasons.map(({ name }) => [name])
+      );
+      const seasonsPromise = db.query(insertSeasonsQueryStr);
 
       const insertCareerEntriesQueryStr = format(
         "INSERT INTO career_entries (player_id, squad_number, club_id, season_id, image_url) VALUES %L RETURNING *;",
-        formattedCareerEntries.map(
+        careerEntries.map(
           ({ player_id, squad_number, club_id, season_id, image_url }) => [
             player_id,
             squad_number,
@@ -101,8 +107,20 @@ const seed = ({ seasons, clubs, players, careerEntries }) => {
           ]
         )
       );
+      const careerEntriesPromise = db.query(insertCareerEntriesQueryStr);
 
-      return db.query(insertCareerEntriesQueryStr);
+      return Promise.all([
+        playersPromise,
+        clubsPromise,
+        seasonsPromise,
+        careerEntriesPromise,
+      ]);
+    })
+    .then(() => {
+      console.log("Data inserted successfully");
+    })
+    .catch((error) => {
+      console.error("Error:", error);
     });
 };
 

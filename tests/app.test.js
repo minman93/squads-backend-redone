@@ -4,6 +4,9 @@ const db = require("../connection");
 require("dotenv").config({ path: ".env.test" });
 const testData = require("../test-data/index");
 
+beforeEach(() => seed(testData));
+
+afterEach(() => db.end());  
 describe("app", () => {
   describe("get welcome message", () => {
     test("returns a status code of 200", () => {
