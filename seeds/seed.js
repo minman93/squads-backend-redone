@@ -1,5 +1,11 @@
 const db = require("../connection");
 const format = require("pg-format");
+const {
+  seasons,
+  clubs,
+  players,
+  careerEntries,
+} = require("../data/test-data/index");
 
 const seed = ({ seasons, clubs, players, careerEntries }) => {
   return db
@@ -95,6 +101,12 @@ const seed = ({ seasons, clubs, players, careerEntries }) => {
       );
       const seasonsPromise = db.query(insertSeasonsQueryStr);
 
+      return Promise.all([playersPromise, clubsPromise, seasonsPromise, ,]);
+    })
+    .then(() => {
+      console.log("Data for first three tables inserted successfully");
+    })
+    .then(() => {
       const insertCareerEntriesQueryStr = format(
         "INSERT INTO career_entries (player_id, squad_number, club_id, season_id, image_url) VALUES %L RETURNING *;",
         careerEntries.map(
@@ -109,16 +121,9 @@ const seed = ({ seasons, clubs, players, careerEntries }) => {
       );
       const careerEntriesPromise = db.query(insertCareerEntriesQueryStr);
 
-      return Promise.all([
-        playersPromise,
-        clubsPromise,
-        seasonsPromise,
-        careerEntriesPromise,
-      ]);
+      return careerEntriesPromise;
     })
-    .then(() => {
-      console.log("Data inserted successfully");
-    })
+    .then(console.log("Data for career_entries inserted successfully"))
     .catch((error) => {
       console.error("Error:", error);
     });

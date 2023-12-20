@@ -15,4 +15,12 @@ module.exports = [
     initials: "AL",
     nation: "England",
   },
+  {
+    id: 3,
+    name: "FUCK IT!",
+    dateofbirth: "1988/04/16",
+    position: "MF",
+    initials: "AM",
+    nation: "England",
+  },
 ];

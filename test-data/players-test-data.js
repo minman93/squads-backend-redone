@@ -15,4 +15,12 @@ module.exports = [
     initials: "AL",
     nation: "England",
   },
+  {
+    id: 3,
+    name: "Aaron MUTHAFUCKALennon",
+    dateofbirth: "1987/04/16",
+    position: "MF",
+    initials: "AL",
+    nation: "England",
+  },
 ];
