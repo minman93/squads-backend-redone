@@ -75,5 +75,16 @@ describe("returns all SEASONS with a GET SEASONS request", () => {
         });
     });
   });
+  describe("returns all CLUB SEASONS with a GET CLUB SEASONS request", () => {
+    test("returns an array of all clubs complete with names and ids,", () => {
+      return request(app)
+        .get("/api/club-seasons")
+        .then(({ body }) => {
+          expect(body.clubSeasons[0]).toHaveProperty("season_id");
+
+          expect(Array.isArray(body.clubSeasons));
+        });
+    });
+  });
 });
 

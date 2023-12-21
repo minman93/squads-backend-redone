@@ -26,5 +26,11 @@ exports.fetchCareerEntries = () => {
     return careerEntries.rows;
   });
 };
+exports.fetchClubSeasons = () => {
+  const queryString = `SELECT * FROM club_seasons;`;
+  return db.query(queryString).then((clubSeasons) => {
+    return clubSeasons.rows;
+  });
+};
 
 

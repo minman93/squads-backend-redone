@@ -5,25 +5,26 @@ const {
   clubs,
   players,
   careerEntries,
+  clubSeasons,
 } = require("../data/test-data/index");
 
-const seed = ({ seasons, clubs, players, careerEntries }) => {
+const seed = ({ seasons, clubs, players, careerEntries, clubSeasons }) => {
   return db
-    .query(`DROP TABLE IF EXISTS career_entries;`)
+    .query(`DROP TABLE IF EXISTS career_entries CASCADE;`)
     .then(() => {
-      console.log("Dropped career_entries table");
-      return db.query(`DROP TABLE IF EXISTS players;`);
+      return db.query(`DROP TABLE IF EXISTS players CASCADE;`);
     })
     .then(() => {
-      console.log("Dropped players table");
-      return db.query(`DROP TABLE IF EXISTS clubs;`);
+      return db.query(`DROP TABLE IF EXISTS clubs CASCADE;`);
     })
     .then(() => {
-      console.log("Dropped clubs table");
-      return db.query(`DROP TABLE IF EXISTS seasons;`);
+      return db.query(`DROP TABLE IF EXISTS seasons CASCADE;`);
     })
     .then(() => {
-      console.log("Dropped seasons table");
+      return db.query("DROP TABLE IF EXISTS club_seasons CASCADE;");
+    })
+
+    .then(() => {
       const playersTablePromise = db.query(`
           CREATE TABLE players (
             id SERIAL PRIMARY KEY,
@@ -63,11 +64,16 @@ const seed = ({ seasons, clubs, players, careerEntries }) => {
           );`);
       console.log("Created career_entries table");
 
+      const clubSeasonsTablePromise = db.query(
+        `CREATE TABLE club_seasons (id SERIAL PRIMARY KEY, club_id INT REFERENCES clubs(id), season_id INT REFERENCES seasons(id) );`
+      );
+
       return Promise.all([
         playersTablePromise,
         clubsTablePromise,
         seasonsTablePromise,
         careerEntriesTablePromise,
+        clubSeasonsTablePromise,
       ]);
     })
     .then(() => {
@@ -101,7 +107,7 @@ const seed = ({ seasons, clubs, players, careerEntries }) => {
       );
       const seasonsPromise = db.query(insertSeasonsQueryStr);
 
-      return Promise.all([playersPromise, clubsPromise, seasonsPromise, ,]);
+      return Promise.all([playersPromise, clubsPromise, seasonsPromise]);
     })
     .then(() => {
       console.log("Data for first three tables inserted successfully");
@@ -121,7 +127,15 @@ const seed = ({ seasons, clubs, players, careerEntries }) => {
       );
       const careerEntriesPromise = db.query(insertCareerEntriesQueryStr);
 
-      return careerEntriesPromise;
+      const insertClubSeasonsQueryStr = format(
+        "INSERT INTO club_seasons (club_id, season_id) VALUES %L RETURNING *;",
+        clubSeasons.map(({ club_id, season_id }) => {
+          console.log(club_id, season_id)[(club_id, season_id)];
+        })
+      );
+      const clubSeasonsPromise = db.query(insertClubSeasonsQueryStr);
+
+      return Promise.all([careerEntriesPromise, clubSeasonsPromise]);
     })
     .then(console.log("Data for career_entries inserted successfully"))
     .catch((error) => {
