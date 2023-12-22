@@ -13,7 +13,7 @@ module.exports = [
     secondaryColour: "#95BFE5",
   },
   {
-    name: "Barley",
+    name: "Barnsley",
     badge:
       "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Barnsley_FC.svg/1200px-Barnsley_FC.svg.png",
     primaryColour: "#aD71921",
