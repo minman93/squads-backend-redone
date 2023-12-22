@@ -1,7 +1,7 @@
 const request = require("supertest");
 const app = require("../app");
 const db = require("../connection");
-const testData = require("../test-data/index");
+const testData = require("../data/test-data/index");
 const seed = require("../seeds/seed");
 
 beforeAll(() => seed(testData));
@@ -39,8 +39,9 @@ describe("app", () => {
         .then(({ body }) => {
           expect(body.clubs[0]).toHaveProperty("name");
           expect(body.clubs[0]).toHaveProperty("badge");
-          expect(body.clubs[0]).toHaveProperty("primary_colour");
-          expect(body.clubs[0]).toHaveProperty("secondary_colour");
+          expect(body.clubs[0]).toHaveProperty("main");
+
+          expect(body.clubs[0]).toHaveProperty("secondary");
 
           expect(Array.isArray(body.clubs));
         });

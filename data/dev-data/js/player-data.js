@@ -1,6 +1,6 @@
 const fs = require("fs");
 const csv = require("csv-parser");
-const playersFilePath = "./player-data.csv";
+const playersFilePath = "../csv/player-data.csv";
 
 const readPlayersFromCSV = () => {
   return new Promise((resolve, reject) => {

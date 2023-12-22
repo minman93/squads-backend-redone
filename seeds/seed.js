@@ -1,12 +1,5 @@
 const db = require("../connection");
 const format = require("pg-format");
-const {
-  seasons,
-  clubs,
-  players,
-  careerEntries,
-  clubSeasons,
-} = require("../test-data/index");
 
 const seed = async ({
   seasons,
@@ -45,8 +38,8 @@ const seed = async ({
         id SERIAL PRIMARY KEY,
         name VARCHAR(50),
         badge VARCHAR(500),
-        primary_colour VARCHAR(10),
-        secondary_colour VARCHAR(10)
+        main VARCHAR(10),
+        secondary VARCHAR(10)
       );`);
     console.log("Created clubs table");
 
@@ -91,12 +84,12 @@ const seed = async ({
     console.log("Inserted players data");
 
     const insertClubsQueryStr = format(
-      "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES %L RETURNING *;",
-      clubs.map(({ name, badge, primary_colour, secondary_colour }) => [
+      "INSERT INTO clubs (name, badge, main, secondary) VALUES %L RETURNING *;",
+      clubs.map(({ name, badge, main, secondary }) => [
         name,
         badge,
-        primary_colour,
-        secondary_colour,
+        main,
+        secondary,
       ])
     );
     await db.query(insertClubsQueryStr);

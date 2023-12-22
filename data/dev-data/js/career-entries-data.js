@@ -1,6 +1,6 @@
 const fs = require("fs");
 const csv = require("csv-parser");
-const careerEntriesFilePath = "../data/csv/career_entries.csv";
+const careerEntriesFilePath = "../csv/career-entries-data.csv";
 
 const readCareerEntriesFromCSV = () => {
   return new Promise((resolve, reject) => {
@@ -30,6 +30,5 @@ const readCareerEntries = async () => {
 };
 
 readCareerEntries();
-
 
 module.exports = readCareerEntries;

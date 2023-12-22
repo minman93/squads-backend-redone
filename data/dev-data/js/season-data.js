@@ -1,4 +1,4 @@
-const allSeasons = [
+module.exports = [
   "1992/1993",
   "1993/1994",
   "1994/1995",
@@ -32,5 +32,9 @@ const allSeasons = [
   "2022/2023",
   "2023/2024",
 ];
+const seasonsObjects = seasons.map((season, index) => ({
+  id: index + 1,
+  name: season,
+}));
 
-module.exports = allSeasons;
+console.log(seasonsObjects);
