@@ -42,7 +42,6 @@ exports.getClubSeasons = (request, response, next) => {
 exports.getSeasonsForClubsById = (request, response, next) => {
   const clubId = request.params.club_id;
   fetchSeasonsForClubsById(clubId).then((seasonsArray) => {
-    console.log(seasonsArray[0]);
     response.status(200).send(seasonsArray);
   });
 };
