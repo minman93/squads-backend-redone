@@ -1,6 +1,6 @@
 module.exports = [
   {
-    name: "Jérémie Aliadiére",
+    name: "Jérémie Aliére",
     dob: "30/03/1983",
     position: "FW",
     initials: "JA",

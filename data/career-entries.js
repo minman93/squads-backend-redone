@@ -5,7 +5,7 @@ module.exports = [
     squad_number: 1,
     club_id: 1,
     season_id: 1,
-    image_url: "https://www.linkedin.com/feed/",
+    image_url: "https://www.kedin.com/feed/",
   },
   {
     id: 2,

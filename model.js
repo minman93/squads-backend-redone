@@ -1,5 +1,5 @@
-const { query } = require("express");
 const db = require("./connection");
+const { query } = require("express");
 
 exports.fetchSeasons = () => {
   const queryString = `SELECT * FROM seasons;`;
