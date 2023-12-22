@@ -85,11 +85,11 @@ const seed = async ({
 
     const insertClubsQueryStr = format(
       "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES %L RETURNING *;",
-      clubs.map(({ name, badge, primary_colour, secondary_colour }) => [
+      clubs.map(({ name, badge, primaryColour, secondaryColour }) => [
         name,
         badge,
-        primary_colour,
-        secondary_colour,
+        primaryColour,
+        secondaryColour,
       ])
     );
     await db.query(insertClubsQueryStr);
