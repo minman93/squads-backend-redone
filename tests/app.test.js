@@ -39,9 +39,9 @@ describe("app", () => {
         .then(({ body }) => {
           expect(body.clubs[0]).toHaveProperty("name");
           expect(body.clubs[0]).toHaveProperty("badge");
-          expect(body.clubs[0]).toHaveProperty("main");
+          expect(body.clubs[0]).toHaveProperty("primary_colour");
 
-          expect(body.clubs[0]).toHaveProperty("secondary");
+          expect(body.clubs[0]).toHaveProperty("secondary_colour");
 
           expect(Array.isArray(body.clubs));
         });

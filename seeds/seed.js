@@ -38,8 +38,8 @@ const seed = async ({
         id SERIAL PRIMARY KEY,
         name VARCHAR(50),
         badge VARCHAR(500),
-        main VARCHAR(10),
-        secondary VARCHAR(10)
+        primary_colour VARCHAR(100),
+        secondary_colour VARCHAR(100)
       );`);
     console.log("Created clubs table");
 
@@ -84,12 +84,12 @@ const seed = async ({
     console.log("Inserted players data");
 
     const insertClubsQueryStr = format(
-      "INSERT INTO clubs (name, badge, main, secondary) VALUES %L RETURNING *;",
-      clubs.map(({ name, badge, main, secondary }) => [
+      "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES %L RETURNING *;",
+      clubs.map(({ name, badge, primary_colour, secondary_colour }) => [
         name,
         badge,
-        main,
-        secondary,
+        primary_colour,
+        secondary_colour,
       ])
     );
     await db.query(insertClubsQueryStr);

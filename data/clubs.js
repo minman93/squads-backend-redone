@@ -1,14 +1,12 @@
 module.exports = [
   {
-    id: "1",
     name: "Arsenal",
     badge:
       "https://cdn.freebiesupply.com/logos/large/2x/arsenal-logo-png-transparent.png",
-    primaryColour: "#EF0107",
-    secondaryColour: "#FFFFFF",
+    primary_colour: "#EF0107",
+    secondary_colour: "#FFFFFF",
   },
   {
-    id: "2",
     name: "Aston Villa",
     badge:
       "https://1000logos.net/wp-content/uploads/2022/05/Aston-Villa-Logo-2016.png",
@@ -16,7 +14,6 @@ module.exports = [
     secondaryColour: "#95BFE5",
   },
   {
-    id: "3",
     name: "Barnsley",
     badge:
       "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Barnsley_FC.svg/1200px-Barnsley_FC.svg.png",
