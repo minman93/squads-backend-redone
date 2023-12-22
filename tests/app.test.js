@@ -4,7 +4,7 @@ const db = require("../connection");
 const testData = require("../test-data/index");
 const seed = require("../seeds/seed");
 
-beforeEach(() => seed(testData));
+beforeAll(() => seed(testData));
 
 afterAll(() => db.end());
 
@@ -21,15 +21,16 @@ describe("app", () => {
         });
     });
   });
-});
-describe("returns all SEASONS with a GET SEASONS request", () => {
-  test("returns an array of all seasons in Premier League history from 1993/1994 up to 2023/2024", () => {
-    return request(app)
-      .get("/api/seasons")
-      .then(({ body }) => {
-        expect(body.seasons[0]).toHaveProperty("name");
-        expect(Array.isArray(body.seasons));
-      });
+
+  describe("returns all SEASONS with a GET SEASONS request", () => {
+    test("returns an array of all seasons in Premier League history from 1993/1994 up to 2023/2024", () => {
+      return request(app)
+        .get("/api/seasons")
+        .then(({ body }) => {
+          expect(body.seasons[0]).toHaveProperty("name");
+          expect(Array.isArray(body.seasons));
+        });
+    });
   });
   describe("returns all CLUBS with a GET CLUBS request", () => {
     test("returns an array of all clubs complete with names, IDs, colour codes and badges", () => {
@@ -76,7 +77,7 @@ describe("returns all SEASONS with a GET SEASONS request", () => {
     });
   });
   describe("returns all CLUB SEASONS with a GET CLUB SEASONS request", () => {
-    test("returns an array of all clubs complete with names and ids,", () => {
+    test("returns an array of all clubs complete with names and ids", () => {
       return request(app)
         .get("/api/club-seasons")
         .then(({ body }) => {
@@ -87,4 +88,5 @@ describe("returns all SEASONS with a GET SEASONS request", () => {
     });
   });
 });
+
 
