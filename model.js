@@ -1,3 +1,4 @@
+const { query } = require("express");
 const db = require("./connection");
 
 exports.fetchSeasons = () => {
@@ -32,5 +33,10 @@ exports.fetchClubSeasons = () => {
     return clubSeasons.rows;
   });
 };
-
-
+exports.fetchSeasonsForClubsById = (clubId) => {
+  const queryString = `SELECT seasons.* FROM seasons JOIN club_seasons on seasons.id = club_seasons.season_id WHERE club_seasons.club_id = $1`;
+  return db.query(queryString, [clubId]).then((seasonsForClubs) => {
+    console.log(seasonsForClubs.rows);
+    return seasonsForClubs.rows;
+  });
+};

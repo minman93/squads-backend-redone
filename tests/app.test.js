@@ -88,6 +88,155 @@ describe("app", () => {
         });
     });
   });
+  describe("returns list of seasons that are associated with a club", () => {
+    test("returns Barnsley's list of seasons when passed Barnsley's club ID", () => {
+      const clubId = 3;
+      const season = "1997/1998";
+      return request(app)
+        .get(`/api/clubs/${clubId}/seasons`)
+        .then(({ body }) => {
+          expect(body[0].name).toEqual(season);
+        });
+    });
+    test("returns Arsenal's list of seasons when passed Arsenal's club ID", () => {
+      const clubId = 1;
+      const seasons = [
+        {
+          id: 1,
+          name: "1992/1993",
+        },
+        {
+          id: 2,
+          name: "1993/1994",
+        },
+        {
+          id: 3,
+          name: "1994/1995",
+        },
+        {
+          id: 4,
+          name: "1995/1996",
+        },
+        {
+          id: 5,
+          name: "1996/1997",
+        },
+        {
+          id: 6,
+          name: "1997/1998",
+        },
+        {
+          id: 7,
+          name: "1998/1999",
+        },
+        {
+          id: 8,
+          name: "1999/2000",
+        },
+        {
+          id: 9,
+          name: "2000/2001",
+        },
+        {
+          id: 10,
+          name: "2001/2002",
+        },
+        {
+          id: 11,
+          name: "2002/2003",
+        },
+        {
+          id: 12,
+          name: "2003/2004",
+        },
+        {
+          id: 13,
+          name: "2004/2005",
+        },
+        {
+          id: 14,
+          name: "2005/2006",
+        },
+        {
+          id: 15,
+          name: "2006/2007",
+        },
+        {
+          id: 16,
+          name: "2007/2008",
+        },
+        {
+          id: 17,
+          name: "2008/2009",
+        },
+        {
+          id: 18,
+          name: "2009/2010",
+        },
+        {
+          id: 19,
+          name: "2010/2011",
+        },
+        {
+          id: 20,
+          name: "2011/2012",
+        },
+        {
+          id: 21,
+          name: "2012/2013",
+        },
+        {
+          id: 22,
+          name: "2013/2014",
+        },
+        {
+          id: 23,
+          name: "2014/2015",
+        },
+        {
+          id: 24,
+          name: "2015/2016",
+        },
+        {
+          id: 25,
+          name: "2016/2017",
+        },
+        {
+          id: 26,
+          name: "2017/2018",
+        },
+        {
+          id: 27,
+          name: "2018/2019",
+        },
+        {
+          id: 28,
+          name: "2019/2020",
+        },
+        {
+          id: 29,
+          name: "2020/2021",
+        },
+        {
+          id: 30,
+          name: "2021/2022",
+        },
+        {
+          id: 31,
+          name: "2022/2023",
+        },
+        {
+          id: 32,
+          name: "2023/2024",
+        },
+      ];
+      return request(app)
+        .get(`/api/clubs/${clubId}/seasons`)
+        .then(({ body }) => {
+          console.log(body);
+          expect(body).toEqual(seasons);
+        });
+    });
+  });
 });
-
 
