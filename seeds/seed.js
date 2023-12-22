@@ -6,7 +6,7 @@ const {
   players,
   careerEntries,
   clubSeasons,
-} = require("../data/test-data/index");
+} = require("../test-data/index");
 
 const seed = async ({
   seasons,
