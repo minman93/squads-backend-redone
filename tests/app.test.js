@@ -53,7 +53,7 @@ describe("app", () => {
         .get("/api/players")
         .then(({ body }) => {
           expect(body.players[0]).toHaveProperty("name");
-          expect(body.players[0]).toHaveProperty("dateofbirth");
+          expect(body.players[0]).toHaveProperty("dob");
           expect(body.players[0]).toHaveProperty("position");
           expect(body.players[0]).toHaveProperty("nation");
           expect(body.players[0]).toHaveProperty("initials");

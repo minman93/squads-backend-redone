@@ -1,5 +1,5 @@
-exports.clubs = require("./club-test-data");
-exports.seasons = require("./seasons-test-data");
-exports.careerEntries = require("./career-entries-test-data");
-exports.players = require("./players-test-data");
-exports.clubSeasons = require("./club-seasons-test-data");
+exports.clubs = require("./clubs");
+exports.seasons = require("./seasons");
+exports.careerEntries = require("./career-entries");
+exports.players = require("./players");
+exports.clubSeasons = require("./club-seasons");

@@ -26,7 +26,7 @@ const seed = async ({
       CREATE TABLE players (
         id SERIAL PRIMARY KEY,
         name VARCHAR(100),
-        dateofbirth VARCHAR(15),
+        dob VARCHAR(15),
         position VARCHAR(20),
         initials VARCHAR(10),
         nation VARCHAR(30)
@@ -71,10 +71,10 @@ const seed = async ({
 
     // Insert data
     const insertPlayersQueryStr = format(
-      "INSERT INTO players (name, dateofbirth, position, initials, nation) VALUES %L RETURNING *;",
-      players.map(({ name, dateofbirth, position, initials, nation }) => [
+      "INSERT INTO players (name, dob, position, initials, nation) VALUES %L RETURNING *;",
+      players.map(({ name, dob, position, initials, nation }) => [
         name,
-        dateofbirth,
+        dob,
         position,
         initials,
         nation,
