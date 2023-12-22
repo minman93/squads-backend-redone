@@ -1,15 +1,14 @@
 module.exports = [
   {
     name: "Arsenal",
-    badge:
-      "https://cdn.freebiesupply.com/logos/large/2x/arsenal-logo-png-transparent.png",
+    badge: "https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png",
     primaryColour: "#EF0107",
     secondaryColour: "#FFFFFF",
   },
   {
     name: "Aston Villa",
     badge:
-      "https://1000logos.net/wp-content/uploads/2022/05/Aston-Villa-Logo-2016.png",
+      "https://seeklogo.com/images/A/aston-villa-logo-55377F01BF-seeklogo.com.png",
     primaryColour: "#a670E36",
     secondaryColour: "#95BFE5",
   },
@@ -121,7 +120,7 @@ module.exports = [
   {
     name: "Derby County",
     badge:
-      "https://i0.wp.com/worldsoccerpins.com/wp-content/uploads/2020/04/Derby-County-FC-2009-2020-1.png?resize=200%2C200&ssl=1",
+      "https://upload.wikimedia.org/wikipedia/en/4/4a/Derby_County_crest.svg",
     primaryColour: "#FFFFFF",
     secondaryColour: "#000000",
   },
@@ -160,10 +159,9 @@ module.exports = [
     secondaryColour: "#FFFFFF",
   },
   {
-    id: "24",
     name: "Leeds United",
     badge:
-      "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Leeds_United_F.C._logo.svg/170px-Leeds_United_F.C._logo.svg.png",
+      "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Leeds_United_F.C._logo.svg/1200px-Leeds_United_F.C._logo.svg.png",
     primaryColour: "#FFFFFF",
     secondaryColour: "#1D428A",
   },
@@ -205,7 +203,7 @@ module.exports = [
   {
     name: "Middlesbrough",
     badge:
-      "https://cdn.freebiesupply.com/logos/large/2x/middlesbrough-fc-logo-png-transparent.png",
+      "https://upload.wikimedia.org/wikipedia/sco/thumb/2/2c/Middlesbrough_FC_crest.svg/1200px-Middlesbrough_FC_crest.svg.png",
     primaryColour: "#E21A23",
     secondaryColour: "#000000",
   },
@@ -226,7 +224,7 @@ module.exports = [
   {
     name: "Nottingham Forest",
     badge:
-      "https://upload.wikimedia.org/wikipedia/sco/thumb/d/d2/Nottingham_Forest_logo.svg/1200px-Nottingham_Forest_logo.svg.png",
+      "https://plprimarystars.scdn7.secure.raxcdn.com/media/view/images/clubs/201819_Season/Forest_crest.png",
     primaryColour: "#DD0000",
     secondaryColour: "#FFFFFF",
   },
@@ -275,7 +273,7 @@ module.exports = [
     name: "Southampton",
     badge:
       "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/FC_Southampton.svg/1200px-FC_Southampton.svg.png",
-    primaryColour: "D71920",
+    primaryColour: "#D71920",
     secondaryColour: "#FFFFFF",
   },
   {
@@ -292,7 +290,6 @@ module.exports = [
     secondaryColour: "#FFFFFF",
   },
   {
-    id: "43",
     name: "Swansea City",
     badge:
       "https://i2-prod.walesonline.co.uk/incoming/article24182057.ece/ALTERNATES/s1200c/0_Swansea-City-22-23-Badge-Blue.png",
@@ -300,7 +297,6 @@ module.exports = [
     secondaryColour: "#000000",
   },
   {
-    id: "44",
     name: "Swindon Town",
     badge: "https://upload.wikimedia.org/wikipedia/en/a/a3/Swindon_Town_FC.svg",
     primaryColour: "#dc161b",
@@ -316,11 +312,10 @@ module.exports = [
   {
     name: "Watford",
     badge: "https://upload.wikimedia.org/wikipedia/en/e/e2/Watford.svg",
-    primaryColour: "#FBEE23",
+    primaryColour: "#FFF200",
     secondaryColour: "#11210C",
   },
   {
-    id: "47",
     name: "West Bromwich Albion",
     badge:
       "https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/West_Bromwich_Albion.svg/1200px-West_Bromwich_Albion.svg.png",
@@ -328,7 +323,6 @@ module.exports = [
     secondaryColour: "#FFFFFF",
   },
   {
-    id: "48",
     name: "West Ham United",
     badge:
       "https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/West_Ham_United_FC_logo.svg/1200px-West_Ham_United_FC_logo.svg.png",
@@ -336,7 +330,6 @@ module.exports = [
     secondaryColour: "#1BB1E7",
   },
   {
-    id: "49",
     name: "Wigan Athletic",
     badge:
       "https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Wigan_Athletic.svg/1200px-Wigan_Athletic.svg.png",
