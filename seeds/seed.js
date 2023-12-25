@@ -9,7 +9,6 @@ const seed = async ({
   clubSeasons,
 }) => {
   try {
-    // Drop tables
     await db.query(`DROP TABLE IF EXISTS career_entries CASCADE;`);
     console.log("Dropped career_entries table");
     await db.query(`DROP TABLE IF EXISTS players CASCADE;`);
@@ -21,7 +20,6 @@ const seed = async ({
     await db.query(`DROP TABLE IF EXISTS club_seasons CASCADE;`);
     console.log("Dropped club_seasons table");
 
-    // Create tables
     await db.query(`
       CREATE TABLE players (
         id SERIAL PRIMARY KEY,
@@ -69,7 +67,6 @@ const seed = async ({
       );`);
     console.log("Created club_seasons table");
 
-    // Insert data
     const insertPlayersQueryStr = format(
       "INSERT INTO players (name, dob, position, initials, nation) VALUES %L RETURNING *;",
       players.map(({ name, dob, position, initials, nation }) => [
