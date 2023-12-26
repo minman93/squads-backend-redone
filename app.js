@@ -5,15 +5,6 @@ const app = express();
 
 app.use(express.json());
 
-// app.use(
-//   "/graphql",
-//   graphqlHTTP({
-//     schema,
-//     pretty: true,
-//     graphiql: true,
-//   })
-// );
-
 const {
   getWelcomeMessage,
   getSeasons,
