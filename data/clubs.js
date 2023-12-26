@@ -1,6 +1,6 @@
 module.exports = [
   {
-    name: "Arseal",
+    name: "Arsenal",
     badge: "https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png",
     primaryColour: "#EF0107",
     secondaryColour: "#FFFFFF",
