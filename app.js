@@ -25,6 +25,6 @@ app.get("/api/career-entries", getCareerEntries);
 app.get("/api/club-seasons", getClubSeasons);
 app.get("/api/clubs/:club_id/seasons", getSeasonsForClubsById);
 app.get("/api/players/:id", getPlayerById);
-app.get("/api/career_entries/:season_id", getCareerEntriesBySeasonId);
+app.get("/api/career-entries/:season_id", getCareerEntriesBySeasonId);
 
 module.exports = app;
