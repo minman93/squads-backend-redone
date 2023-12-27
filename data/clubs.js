@@ -9,14 +9,14 @@ module.exports = [
     name: "Aston Villa",
     badge:
       "https://seeklogo.com/images/A/aston-villa-logo-55377F01BF-seeklogo.com.png",
-    primaryColour: "#a670E36",
+    primaryColour: "#670E36",
     secondaryColour: "#95BFE5",
   },
   {
     name: "Barnsley",
     badge:
       "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Barnsley_FC.svg/1200px-Barnsley_FC.svg.png",
-    primaryColour: "#aD71921",
+    primaryColour: "#D71921",
     secondaryColour: "#000000",
   },
   {
@@ -24,14 +24,14 @@ module.exports = [
     name: "Birmingham City",
     badge:
       "https://upload.wikimedia.org/wikipedia/en/thumb/6/68/Birmingham_City_FC_logo.svg/1200px-Birmingham_City_FC_logo.svg.png",
-    primaryColour: "#0a000FF",
+    primaryColour: "#0000FF",
     secondaryColour: "#FFFFFF",
   },
   {
     name: "Blackburn Rovers",
     badge:
       "https://upload.wikimedia.org/wikipedia/en/thumb/0/0f/Blackburn_Rovers.svg/1200px-Blackburn_Rovers.svg.png",
-    primaryColour: "#a009EE0",
+    primaryColour: "#009EE0",
     secondaryColour: "#FFFFFF",
   },
   {
