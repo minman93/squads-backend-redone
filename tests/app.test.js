@@ -251,7 +251,7 @@ describe("app", () => {
     test("returns all career entries from a single season", () => {
       const seasonId = 12;
       return request(app)
-        .get(`/api/career_entries/${seasonId}`)
+        .get(`/api/career-entries/${seasonId}`)
         .then(({ body }) => {
           console.log("Console log body in tests ----->", body);
           expect(body[0].season_id).toEqual(12);
