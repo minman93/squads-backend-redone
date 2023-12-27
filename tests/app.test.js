@@ -251,11 +251,33 @@ describe("app", () => {
     test("returns all career entries from a single season", () => {
       const seasonId = 12;
       return request(app)
-        .get(`/api/career-entries/${seasonId}`)
+        .get(`/api/career-entries/${seasonId}/`)
         .then(({ body }) => {
-          console.log("Console log body in tests ----->", body);
           expect(body[0].season_id).toEqual(12);
           expect(body[1].season_id).toEqual(12);
+        });
+    });
+  });
+  describe("returns all career entries from a single club from a single season", () => {
+    test("returns all career entries from a single club from a single season", () => {
+      const seasonId = 12;
+      const clubId = 1;
+      return request(app)
+        .get(`/api/career-entries/${seasonId}/${clubId}`)
+        .then(({ body }) => {
+          expect(body[0].season_id).toEqual(12);
+          expect(body[1].season_id).toEqual(12);
+        });
+    });
+  });
+  describe("returns all players with a career entry in a single club in a single season", () => {
+    test("returns all players with a career entry in a single club in a single season", () => {
+      const seasonId = 12;
+      const clubId = 1;
+      return request(app)
+        .get(`/api/career-entries/${seasonId}/${clubId}/players`)
+        .then(({ body }) => {
+          expect(body[0].name).toEqual("Dennis Bergkamp");
         });
     });
   });

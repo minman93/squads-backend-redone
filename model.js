@@ -42,7 +42,6 @@ exports.fetchSeasonsForClubsById = (clubId) => {
 exports.fetchPlayerById = (playerId) => {
   const queryString = `SELECT * FROM players WHERE id = $1;`;
   return db.query(queryString, [playerId]).then((player) => {
-    console.log(player);
     return player.rows;
   });
 };
@@ -50,5 +49,27 @@ exports.fetchCareerEntriesBySeasonId = (seasonId) => {
   const queryString = `SELECT * FROM career_entries WHERE season_id = $1;`;
   return db.query(queryString, [seasonId]).then((careerEntries) => {
     return careerEntries.rows;
+  });
+};
+exports.fetchCareerEntriesBySeasonIdAndClubId = (seasonId, clubId) => {
+  const queryString = `SELECT * FROM career_entries WHERE season_id = $1 and club_id = $2;`;
+  return db.query(queryString, [seasonId, clubId]).then((careerEntries) => {
+    return careerEntries.rows;
+  });
+};
+exports.fetchPlayersByClubAndSeason = (seasonId, clubId) => {
+  const queryString = `
+    SELECT
+      p.*
+    FROM
+      players p
+    JOIN
+      career_entries ce ON p.id = ce.player_id
+    WHERE
+      ce.season_id = $1
+      AND ce.club_id = $2;
+  `;
+  return db.query(queryString, [seasonId, clubId]).then((players) => {
+    return players.rows;
   });
 };

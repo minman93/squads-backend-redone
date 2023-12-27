@@ -7,6 +7,8 @@ const {
   fetchSeasonsForClubsById,
   fetchPlayerById,
   fetchCareerEntriesBySeasonId,
+  fetchCareerEntriesBySeasonIdAndClubId,
+  fetchPlayersByClubAndSeason,
 } = require("./model");
 
 exports.getWelcomeMessage = (request, response, next) => {
@@ -56,5 +58,23 @@ exports.getCareerEntriesBySeasonId = (request, response, next) => {
   const seasonId = request.params.season_id;
   fetchCareerEntriesBySeasonId(seasonId).then((careerEntries) => {
     response.status(200).send(careerEntries);
+  });
+};
+exports.getCareerEntriesBySeasonIdAndClubId = (request, response, next) => {
+  const seasonId = request.params.season_id;
+  const clubId = request.params.club_id;
+  fetchCareerEntriesBySeasonIdAndClubId(seasonId, clubId).then(
+    (careerEntries) => {
+      response.status(200).send(careerEntries);
+    }
+  );
+};
+exports.getPlayersByClubAndSeason = (request, response, next) => {
+  console.log(request.params);
+  const seasonId = request.params.season_id;
+  const clubId = request.params.club_id;
+  fetchPlayersByClubAndSeason(seasonId, clubId).then((players) => {
+    console.log(players);
+    response.status(200).send(players);
   });
 };
