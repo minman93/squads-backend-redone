@@ -20,7 +20,9 @@
     "supertest": "^6.3.3"
   },
   "scripts": {
-    "test": "jest --watch"
+    "start": "node listen.js",
+    "test": "jest --watch",
+    "seed": "node seeds/run-seed.js"
   },
   "repository": {
     "type": "git",
