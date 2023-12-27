@@ -22,6 +22,7 @@
   "scripts": {
     "start": "node listen.js",
     "test": "jest --watch",
+    "seed-prod": "NODE_ENV=production npm run seed",
     "seed": "node seeds/run-seed.js"
   },
   "repository": {
