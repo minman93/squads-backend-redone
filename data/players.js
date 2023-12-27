@@ -48,6 +48,14 @@ module.exports = [
     initials: "AC",
     nation: "England",
   },
+  //CHANGE DOB
+  {
+    name: "Cristiano Ronaldo",
+    dob: "20/12/1980",
+    position: "MF",
+    initials: "CR",
+    nation: "Portugal",
+  },
   {
     name: "Pascal Cygan",
     dob: "29/04/1974",

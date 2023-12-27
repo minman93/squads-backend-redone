@@ -233,8 +233,29 @@ describe("app", () => {
       return request(app)
         .get(`/api/clubs/${clubId}/seasons`)
         .then(({ body }) => {
-          console.log(body);
           expect(body).toEqual(seasons);
+        });
+    });
+  });
+  describe("returns a single player by id", () => {
+    test("returns Dennis Bergkamp when requesting his id number", () => {
+      const playerId = 3;
+      return request(app)
+        .get(`/api/players/${playerId}`)
+        .then(({ body }) => {
+          expect(body[0].name).toEqual("Dennis Bergkamp");
+        });
+    });
+  });
+  describe("returns all career entries from a single season", () => {
+    test("returns all career entries from a single season", () => {
+      const seasonId = 12;
+      return request(app)
+        .get(`/api/career_entries/${seasonId}`)
+        .then(({ body }) => {
+          console.log("Console log body in tests ----->", body);
+          expect(body[0].season_id).toEqual(12);
+          expect(body[1].season_id).toEqual(12);
         });
     });
   });
