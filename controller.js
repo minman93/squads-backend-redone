@@ -74,7 +74,7 @@ exports.getPlayersByClubAndSeason = (request, response, next) => {
   const seasonId = request.params.season_id;
   const clubId = request.params.club_id;
   fetchPlayersByClubAndSeason(seasonId, clubId).then((players) => {
-    console.log(players);
+
     response.status(200).send(players);
   });
 };
