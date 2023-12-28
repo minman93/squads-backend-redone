@@ -14,6 +14,12 @@ exports.fetchClubs = () => {
     return clubs.rows;
   });
 };
+exports.fetchClubById = (clubId) => {
+  const queryString = `SELECT * FROM clubs WHERE id = $1`;
+  return db.query(queryString, [clubId]).then((club) => {
+    return club.rows;
+  });
+};
 
 exports.fetchPlayers = () => {
   const queryString = `SELECT * FROM players;`;

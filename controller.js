@@ -9,6 +9,7 @@ const {
   fetchCareerEntriesBySeasonId,
   fetchCareerEntriesBySeasonIdAndClubId,
   fetchPlayersByClubAndSeason,
+  fetchClubById,
 } = require("./model");
 
 exports.getWelcomeMessage = (request, response, next) => {
@@ -26,6 +27,13 @@ exports.getClubs = (request, response, next) => {
     response.status(200).send({ clubs: clubsArray });
   });
 };
+exports.getClubById = (request, response, next) => {
+  const clubId = request.params.id;
+  fetchClubById(clubId).then((club) => {
+    response.status(200).send({ club });
+  });
+};
+
 
 exports.getPlayers = (request, response, next) => {
   fetchPlayers().then((playersArray) => {
