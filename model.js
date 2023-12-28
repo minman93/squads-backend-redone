@@ -60,7 +60,8 @@ exports.fetchCareerEntriesBySeasonIdAndClubId = (seasonId, clubId) => {
 exports.fetchPlayersByClubAndSeason = (seasonId, clubId) => {
   const queryString = `
     SELECT
-      p.*
+      p.*,
+      ce.*
     FROM
       players p
     JOIN
