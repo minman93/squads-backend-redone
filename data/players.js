@@ -1,5 +1,6 @@
 module.exports = [
   {
+    id: 1,
     name: "Jérémie Aliadiére",
     dob: "30/03/1983",
     position: "FW",
@@ -7,6 +8,7 @@ module.exports = [
     nation: "France",
   },
   {
+    id: 2,
     name: "David Bentley",
     dob: "27/08/1984",
     position: "MF",
@@ -14,6 +16,7 @@ module.exports = [
     nation: "England",
   },
   {
+    id: 3,
     name: "Dennis Bergkamp",
     dob: "10/05/1969",
     position: "FW",
@@ -21,6 +24,7 @@ module.exports = [
     nation: "Netherlands",
   },
   {
+    id: 4,
     name: "Sol Campbell",
     dob: "18/09/1974",
     position: "DF",
@@ -28,6 +32,7 @@ module.exports = [
     nation: "England",
   },
   {
+    id: 5,
     name: "Cesc Fàbregas",
     dob: "04/05/1987",
     position: "MF",
@@ -35,6 +40,7 @@ module.exports = [
     nation: "Spain",
   },
   {
+    id: 6,
     name: "Gaël Clichy",
     dob: "26/07/1985",
     position: "DF",
@@ -42,14 +48,15 @@ module.exports = [
     nation: "France",
   },
   {
+    id: 7,
     name: "Ashley Cole",
     dob: "20/12/1980",
     position: "DF",
     initials: "AC",
     nation: "England",
   },
-  //CHANGE DOB
   {
+    id: 8,
     name: "Cristiano Ronaldo",
     dob: "20/12/1980",
     position: "MF",
@@ -57,6 +64,7 @@ module.exports = [
     nation: "Portugal",
   },
   {
+    id: 9,
     name: "Pascal Cygan",
     dob: "29/04/1974",
     position: "DF",
@@ -64,6 +72,7 @@ module.exports = [
     nation: "France",
   },
   {
+    id: 10,
     name: "Edu Gaspar",
     dob: "16/05/1978",
     position: "MF",
@@ -71,6 +80,7 @@ module.exports = [
     nation: "Brazil",
   },
   {
+    id: 11,
     name: "Lauren Etame Mayer",
     dob: "19/01/1977",
     position: "DF",
@@ -78,6 +88,7 @@ module.exports = [
     nation: "Cameroon",
   },
   {
+    id: 12,
     name: "Ryan Garry",
     dob: "29/09/1983",
     position: "DF",
@@ -85,6 +96,7 @@ module.exports = [
     nation: "England",
   },
   {
+    id: 13,
     name: "Gilberto Silva",
     dob: "07/10/1976",
     position: "MF",
@@ -92,6 +104,7 @@ module.exports = [
     nation: "Brazil",
   },
   {
+    id: 14,
     name: "Thierry Henry",
     dob: "17/08/1977",
     position: "FW",
@@ -99,7 +112,7 @@ module.exports = [
     nation: "France",
   },
   {
-    id: 14,
+    id: 15,
     name: "Craig Holloway",
     dob: "10/08/1984",
     position: "???",
@@ -107,6 +120,7 @@ module.exports = [
     nation: "England",
   },
   {
+    id: 16,
     name: "Justin Hoyte",
     dob: "20/11/1984",
     position: "DF",
@@ -114,6 +128,7 @@ module.exports = [
     nation: "England",
   },
   {
+    id: 17,
     name: "Nwankwo Kanu",
     dob: "01/08/1976",
     position: "FW",
@@ -121,6 +136,7 @@ module.exports = [
     nation: "Nigeria",
   },
   {
+    id: 18,
     name: "Martin Keown",
     dob: "24/07/1966",
     position: "DF",
@@ -128,6 +144,7 @@ module.exports = [
     nation: "England",
   },
   {
+    id: 19,
     name: "Jens Lehmann",
     dob: "10/11/1969",
     position: "GK",
@@ -135,6 +152,7 @@ module.exports = [
     nation: "Germany",
   },
   {
+    id: 20,
     name: "Freddie Ljungberg",
     dob: "16/04/1977",
     position: "MF",
@@ -142,6 +160,7 @@ module.exports = [
     nation: "Sweden",
   },
   {
+    id: 21,
     name: "Quincy Owusu-Abeyie",
     dob: "15/04/1986",
     position: "FW",
@@ -149,6 +168,7 @@ module.exports = [
     nation: "Netherlands",
   },
   {
+    id: 22,
     name: "Michal Papadopulos",
     dob: "14/04/1985",
     position: "FW",
@@ -156,6 +176,7 @@ module.exports = [
     nation: "Czech Republic",
   },
   {
+    id: 23,
     name: "Ray Parlour",
     dob: "07/03/1973",
     position: "MF",
@@ -163,6 +184,7 @@ module.exports = [
     nation: "England",
   },
   {
+    id: 24,
     name: "Robert Pirès",
     dob: "29/10/1973",
     position: "MF",
@@ -170,6 +192,7 @@ module.exports = [
     nation: "France",
   },
   {
+    id: 25,
     name: "Reyes",
     dob: "01/09/1983",
     position: "FW",
@@ -177,6 +200,7 @@ module.exports = [
     nation: "Spain",
   },
   {
+    id: 26,
     name: "Philippe Senderos",
     dob: "14/02/1985",
     position: "DF",
@@ -184,6 +208,7 @@ module.exports = [
     nation: "Switzerland",
   },
   {
+    id: 27,
     name: "Frank Simek",
     dob: "13/10/1984",
     position: "DF",
@@ -191,6 +216,7 @@ module.exports = [
     nation: "United States",
   },
   {
+    id: 28,
     name: "Ólafur Skúlason",
     dob: "01/04/1983",
     position: "DF",
@@ -198,6 +224,7 @@ module.exports = [
     nation: "Iceland",
   },
   {
+    id: 29,
     name: "Ryan Smith",
     dob: "10/11/1986",
     position: "MF",
@@ -205,7 +232,7 @@ module.exports = [
     nation: "England",
   },
   {
-    id: 29,
+    id: 30,
     name: "John Spicer",
     dob: "13/09/1983",
     position: "MF",
@@ -213,6 +240,7 @@ module.exports = [
     nation: "England",
   },
   {
+    id: 31,
     name: "Graham Stack",
     dob: "26/09/1981",
     position: "GK",
@@ -220,6 +248,7 @@ module.exports = [
     nation: "Ireland",
   },
   {
+    id: 32,
     name: "Stuart Taylor",
     dob: "28/11/1980",
     position: "GK",
@@ -227,6 +256,7 @@ module.exports = [
     nation: "England",
   },
   {
+    id: 33,
     name: "Kolo Touré",
     dob: "19/03/1981",
     position: "DF",
@@ -234,6 +264,7 @@ module.exports = [
     nation: "Ivory Coast",
   },
   {
+    id: 34,
     name: "Patrick Vieira",
     dob: "23/06/1976",
     position: "MF",
@@ -241,6 +272,7 @@ module.exports = [
     nation: "France",
   },
   {
+    id: 35,
     name: "Sylvain Wiltord",
     dob: "10/05/1974",
     position: "FW",
