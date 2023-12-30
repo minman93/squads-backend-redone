@@ -277,7 +277,7 @@ describe("app", () => {
       return request(app)
         .get(`/api/career-entries/${seasonId}/${clubId}/players`)
         .then(({ body }) => {
-          expect(body[0].name).toEqual("Dennis Bergkamp");
+          expect(body[0].name).toEqual("Jens Lehmann");
         });
     });
   });
