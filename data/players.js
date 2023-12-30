@@ -1,7 +1,7 @@
 module.exports = [
   {
     id: 1,
-    name: "Jérémie Aliadiére",
+    name: "Jeremie Aliadiere",
     dob: "30/03/1983",
     position: "FW",
     initials: "JA",
@@ -33,7 +33,7 @@ module.exports = [
   },
   {
     id: 5,
-    name: "Cesc Fàbregas",
+    name: "Cesc Fabregas",
     dob: "04/05/1987",
     position: "MF",
     initials: "CF",
@@ -41,7 +41,7 @@ module.exports = [
   },
   {
     id: 6,
-    name: "Gaël Clichy",
+    name: "Gael Clichy",
     dob: "26/07/1985",
     position: "DF",
     initials: "GC",
@@ -185,7 +185,7 @@ module.exports = [
   },
   {
     id: 24,
-    name: "Robert Pirès",
+    name: "Robert Pires",
     dob: "29/10/1973",
     position: "MF",
     initials: "RP",
@@ -193,10 +193,10 @@ module.exports = [
   },
   {
     id: 25,
-    name: "Reyes",
+    name: "Jose Antonio Reyes",
     dob: "01/09/1983",
     position: "FW",
-    initials: "R",
+    initials: "JAR",
     nation: "Spain",
   },
   {
@@ -217,7 +217,7 @@ module.exports = [
   },
   {
     id: 28,
-    name: "Ólafur Skúlason",
+    name: "Olafur Skulason",
     dob: "01/04/1983",
     position: "DF",
     initials: "OS",
@@ -257,7 +257,7 @@ module.exports = [
   },
   {
     id: 33,
-    name: "Kolo Touré",
+    name: "Kolo Toure",
     dob: "19/03/1981",
     position: "DF",
     initials: "KT",
