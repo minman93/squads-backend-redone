@@ -33,7 +33,7 @@ describe("app", () => {
     });
   });
   describe("returns all CLUBS with a GET CLUBS request", () => {
-    test("returns an array of all clubs complete with names, IDs, colour codes and badges", () => {
+    test("returns an array of all clubs complete with names, IDs, colour codes, shirts and badges", () => {
       return request(app)
         .get("/api/clubs")
         .then(({ body }) => {
@@ -42,6 +42,7 @@ describe("app", () => {
           expect(body.clubs[0]).toHaveProperty("primary_colour");
 
           expect(body.clubs[0]).toHaveProperty("secondary_colour");
+          expect(body.clubs[0]).toHaveProperty("shirt");
 
           expect(Array.isArray(body.clubs));
         });

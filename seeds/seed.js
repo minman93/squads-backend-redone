@@ -37,7 +37,8 @@ const seed = async ({
         name VARCHAR(50),
         badge VARCHAR(500),
         primary_colour VARCHAR(100),
-        secondary_colour VARCHAR(100)
+        secondary_colour VARCHAR(100),
+        shirt VARCHAR(100)
       );`);
     console.log("Created clubs table");
 
@@ -81,12 +82,13 @@ const seed = async ({
     console.log("Inserted players data");
 
     const insertClubsQueryStr = format(
-      "INSERT INTO clubs (name, badge, primary_colour, secondary_colour) VALUES %L RETURNING *;",
-      clubs.map(({ name, badge, primaryColour, secondaryColour }) => [
+      "INSERT INTO clubs (name, badge, primary_colour, secondary_colour, shirt) VALUES %L RETURNING *;",
+      clubs.map(({ name, badge, primaryColour, secondaryColour, shirt }) => [
         name,
         badge,
         primaryColour,
         secondaryColour,
+        shirt,
       ])
     );
     await db.query(insertClubsQueryStr);
