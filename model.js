@@ -7,6 +7,12 @@ exports.fetchSeasons = () => {
     return seasons.rows;
   });
 };
+exports.fetchSeasonById = (seasonId) => {
+  const queryString = `SELECT * FROM seasons WHERE id = $1`;
+  return db.query(queryString, [seasonId]).then((season) => {
+    return season.rows;
+  });
+};
 
 exports.fetchClubs = () => {
   const queryString = `SELECT * FROM clubs;`;

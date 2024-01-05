@@ -18,10 +18,12 @@ const {
   getCareerEntriesBySeasonIdAndClubId,
   getPlayersByClubAndSeason,
   getClubById,
+  getSeasonById,
 } = require("./controller");
 
 app.get("/api", getWelcomeMessage);
 app.get("/api/seasons", getSeasons);
+app.get("/api/seasons/:id", getSeasonById);
 app.get("/api/clubs", getClubs);
 app.get("/api/clubs/:id", getClubById);
 app.get("/api/players", getPlayers);

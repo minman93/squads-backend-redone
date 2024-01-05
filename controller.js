@@ -10,6 +10,7 @@ const {
   fetchCareerEntriesBySeasonIdAndClubId,
   fetchPlayersByClubAndSeason,
   fetchClubById,
+  fetchSeasonById,
 } = require("./model");
 
 exports.getWelcomeMessage = (request, response, next) => {
@@ -19,6 +20,12 @@ exports.getWelcomeMessage = (request, response, next) => {
 exports.getSeasons = (request, response, next) => {
   fetchSeasons().then((seasonsArray) => {
     response.status(200).send({ seasons: seasonsArray });
+  });
+};
+exports.getSeasonById = (request, response, next) => {
+  const seasonId = request.params.id;
+  fetchSeasonById(seasonId).then((season) => {
+    response.status(200).send({ season });
   });
 };
 
