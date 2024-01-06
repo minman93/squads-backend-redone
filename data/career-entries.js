@@ -42,7 +42,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.thesun.co.uk/wp-content/uploads/2016/11/nintchdbpict000197646300.jpg",
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.thesun.co.uk/wp-content/uploads/2019/11/NINTCHDBPICT000001969710-e1575033474738.jpg",
   },
   {
     id: 7,
@@ -60,7 +60,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.thesun.co.uk/wp-content/uploads/2020/04/NINTCHDBPICT000494367581-e1585834148190.jpg",
   },
   {
     id: 8,
@@ -69,7 +69,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.thesun.co.uk/wp-content/uploads/2023/03/dennis-bergkamp-arsenal-celebrates-one-574976964.jpg",
   },
   {
     id: 9,
@@ -77,8 +77,7 @@ module.exports = [
     squad_number: 11,
     club_id: 1,
     season_id: 12,
-    image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+    image_url: "https://pbs.twimg.com/media/E1DHvShWQAAUPRJ.jpg",
   },
   {
     id: 10,
@@ -87,7 +86,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://e0.365dm.com/16/11/2048x1152/skysports-lauren-arsenal-fantasy-football_3842311.jpg?20161128213548",
   },
   {
     id: 11,
@@ -96,7 +95,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.arsenalpics.com/p/5/thierry-henry-breaks-tottenham-defence-way-4379759.jpg.webp",
   },
   {
     id: 12,
@@ -105,7 +104,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.arsenalpics.com/p/5/edu-arsenal-claps-fans-end-match-361309.jpg.webp",
   },
   {
     id: 13,
@@ -114,7 +113,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://pbs.twimg.com/media/CDvmO1UWYAAaD8O?format=jpg&name=4096x4096",
   },
   {
     id: 14,
@@ -123,7 +122,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.thesun.co.uk/wp-content/uploads/2023/11/gilberto-silva-arsenal-4452091.jpg",
   },
   {
     id: 15,
@@ -132,7 +131,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.mediastorehouse.com.au/p/5/gael-clichy-arsenal-arsenal-1-1-ac-milan-3776243.jpg.webp",
   },
   {
     id: 16,
@@ -141,7 +140,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.arsenalpics.com/p/5/arsenal-captain-sol-campbell-applauds-fans-match-111798.jpg.webp",
   },
   {
     id: 17,
@@ -150,7 +149,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.arsenal.com/sites/default/files/shorthand/stories/F58cVapASV/2023-12-18T15%3A33%3A23.630Z/assets/Xzpjduv2w3/kanu_arsenal_031026csport-1720x2380.jpg",
   },
   {
     id: 18,
@@ -159,7 +158,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.footballdatabase.eu/images/photos/players/2003-2004/a_5/5330.jpg",
   },
   {
     id: 19,
@@ -168,7 +167,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.arsenalpics.com/p/5/kolo-toure-arsenal-arsenal-2-1-porto-96811.jpg.webp",
   },
   {
     id: 20,
@@ -177,7 +176,7 @@ module.exports = [
     club_id: 1,
     season_id: 12,
     image_url:
-      "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
+      "https://www.thesun.co.uk/wp-content/uploads/2023/05/fd679748-e957-4531-8b93-eb89e9fa581b.jpg",
   },
   {
     id: 21,
@@ -279,4 +278,3 @@ module.exports = [
       "https://www.thesun.co.uk/wp-content/uploads/2018/03/nintchdbpict000003283749.jpg",
   },
 ];
-
