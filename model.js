@@ -141,6 +141,13 @@ exports.fetchPlayersByClubAndSeason = (seasonId, clubId) => {
       AND ce.club_id = $2;
   `;
   return db.query(queryString, [seasonId, clubId]).then((players) => {
+    if (seasonId > 32 || clubId > 51) {
+      return Promise.reject({
+        status: 404,
+        message:
+          "Career Entries Not Found. Season IDs range from 1-32 and Club IDs range from 1-51.",
+      });
+    }
     if (players.rows.length === 0) {
       return Promise.reject({
         status: 404,
