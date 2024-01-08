@@ -170,6 +170,106 @@ describe("ALL TESTS", () => {
             expect(Array.isArray(body.players));
           });
       });
+      describe("returns all CAREER ENTRIES from a single SEASON and handles errors if an invalid SEASON ID is passed", () => {
+        test("returns all CAREER from a single SEASON", () => {
+          const seasonId = 12;
+          return request(app)
+            .get(`/api/career-entries/${seasonId}/`)
+            .then(({ body }) => {
+              expect(body[0].season_id).toEqual(12);
+              expect(body[1].season_id).toEqual(12);
+            });
+        });
+        test("returns an error message if an invalid SEASON ID is passed", () => {
+          const seasonId = 40;
+          const message =
+            "Career Entries Not Found. Season IDs range from 1-32.";
+          return request(app)
+            .get(`/api/career-entries/${seasonId}/`)
+            .then(({ body }) => {
+              expect(body.message).toEqual(message);
+            });
+        });
+        test("returns an under construction message if a valid SEASON ID is passed but there is no data", () => {
+          const seasonId = 14;
+          const message =
+            "Career Entries Not Found. Sorry, this data is under construction!";
+
+          return request(app)
+            .get(`/api/career-entries/${seasonId}/`)
+            .then(({ body }) => {
+              expect(body.message).toEqual(message);
+            });
+        });
+        describe("returns all CAREER ENTRIES from a single CLUB from a single SEASON and handles errors when invalid IDs are passed", () => {
+          test("returns all CAREER ENTRIES from a single CLUB from a single SEASON", () => {
+            const seasonId = 12;
+            const clubId = 1;
+            return request(app)
+              .get(`/api/career-entries/${seasonId}/${clubId}`)
+              .then(({ body }) => {
+                expect(body[0].season_id).toEqual(12);
+                expect(body[1].season_id).toEqual(12);
+              });
+          });
+          test("returns an error message when an invalid SEASON ID is passed", () => {
+            const seasonId = 40;
+            const clubId = 1;
+            const message =
+              "Career Entries Not Found. Season IDs range from 1-32 and Club IDs range from 1-51";
+            return request(app)
+              .get(`/api/career-entries/${seasonId}/${clubId}`)
+              .then(({ body }) => {
+                expect(body.message).toEqual(message);
+              });
+          });
+          test("returns an error message when an invalid CLUB ID is passed", () => {
+            const seasonId = 12;
+            const clubId = 55;
+            const message =
+              "Career Entries Not Found. Season IDs range from 1-32 and Club IDs range from 1-51";
+            return request(app)
+              .get(`/api/career-entries/${seasonId}/${clubId}`)
+              .then(({ body }) => {
+                expect(body.message).toEqual(message);
+              });
+          });
+        });
+
+        describe("returns all players with a CAREER ENTRY in a single CLUB in a single SEASON and handles errors when an invalid CLUB ID or SEASON ID is passed", () => {
+          test("returns all players with a career entry in a single club in a single season", () => {
+            const seasonId = 12;
+            const clubId = 1;
+            return request(app)
+              .get(`/api/career-entries/${seasonId}/${clubId}/players`)
+              .then(({ body }) => {
+                expect(body[0].name).toEqual("Jens Lehmann");
+              });
+          });
+          test("returns an error message when an invalid SEASON ID is passed", () => {
+            const seasonId = 40;
+            const clubId = 1;
+            const message =
+              "Career Entries Not Found. Sorry, this data is under construction!";
+            return request(app)
+              .get(`/api/career-entries/${seasonId}/${clubId}/players`)
+              .then(({ body }) => {
+                expect(body.message).toEqual(message);
+              });
+          });
+        });
+        test("returns an error message when an invalid CLUB ID is passed", () => {
+          const seasonId = 12;
+          const clubId = 55;
+          const message =
+            "Career Entries Not Found. Sorry, this data is under construction!";
+          return request(app)
+            .get(`/api/career-entries/${seasonId}/${clubId}/players`)
+            .then(({ body }) => {
+              expect(body.message).toEqual(message);
+            });
+        });
+      });
     });
   });
   describe("CLUB SEASONS", () => {
@@ -347,41 +447,6 @@ describe("ALL TESTS", () => {
             expect(body.message).toEqual(message);
           });
       });
-    });
-  });
-
-  describe("returns all career entries from a single season", () => {
-    test("returns all career entries from a single season", () => {
-      const seasonId = 12;
-      return request(app)
-        .get(`/api/career-entries/${seasonId}/`)
-        .then(({ body }) => {
-          expect(body[0].season_id).toEqual(12);
-          expect(body[1].season_id).toEqual(12);
-        });
-    });
-  });
-  describe("returns all career entries from a single club from a single season", () => {
-    test("returns all career entries from a single club from a single season", () => {
-      const seasonId = 12;
-      const clubId = 1;
-      return request(app)
-        .get(`/api/career-entries/${seasonId}/${clubId}`)
-        .then(({ body }) => {
-          expect(body[0].season_id).toEqual(12);
-          expect(body[1].season_id).toEqual(12);
-        });
-    });
-  });
-  describe("returns all players with a career entry in a single club in a single season", () => {
-    test("returns all players with a career entry in a single club in a single season", () => {
-      const seasonId = 12;
-      const clubId = 1;
-      return request(app)
-        .get(`/api/career-entries/${seasonId}/${clubId}/players`)
-        .then(({ body }) => {
-          expect(body[0].name).toEqual("Jens Lehmann");
-        });
     });
   });
 });
