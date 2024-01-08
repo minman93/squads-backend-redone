@@ -1,15 +1,25 @@
 const db = require("./connection");
-
+const { getPlayers } = require("./controller");
+const { players } = require("./data");
 
 exports.fetchSeasons = () => {
   const queryString = `SELECT * FROM seasons;`;
   return db.query(queryString).then((seasons) => {
+    if (seasons.rows.length === 0) {
+      return Promise.reject({ status: 404, message: "Path Not Found" });
+    }
     return seasons.rows;
   });
 };
 exports.fetchSeasonById = (seasonId) => {
   const queryString = `SELECT * FROM seasons WHERE id = $1`;
   return db.query(queryString, [seasonId]).then((season) => {
+    if (season.rows.length === 0) {
+      return Promise.reject({
+        status: 404,
+        message: "Season Not Found. Season IDs range from 1-32.",
+      });
+    }
     return season.rows;
   });
 };
@@ -23,6 +33,12 @@ exports.fetchClubs = () => {
 exports.fetchClubById = (clubId) => {
   const queryString = `SELECT * FROM clubs WHERE id = $1`;
   return db.query(queryString, [clubId]).then((club) => {
+    if (club.rows.length === 0) {
+      return Promise.reject({
+        status: 404,
+        message: "Club Not Found. Club IDs range from 1-51.",
+      });
+    }
     return club.rows;
   });
 };
@@ -54,6 +70,13 @@ exports.fetchSeasonsForClubsById = (clubId) => {
 exports.fetchPlayerById = (playerId) => {
   const queryString = `SELECT * FROM players WHERE id = $1;`;
   return db.query(queryString, [playerId]).then((player) => {
+    if (player.rows.length === 0) {
+      return Promise.reject({
+        status: 404,
+        message: `Player Not Found. Player IDs range from 1-${players.length}`,
+      });
+    }
+
     return player.rows;
   });
 };
