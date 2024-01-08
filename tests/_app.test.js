@@ -184,12 +184,15 @@ describe("ALL TESTS", () => {
       });
     });
     describe("returns lists of SEASONS when passed a CLUB ID and handles errors when passed an invalid CLUB ID", () => {
-      test("returns Barnsley's list of seasons when passed Barnsley's club ID", () => {
+      test("returns Barnsley's single season when passed Barnsley's club ID", () => {
         const clubId = 3;
         const season = "1997/1998";
         return request(app)
           .get(`/api/clubs/${clubId}/seasons`)
           .then(({ body }) => {
+            expect(Array.isArray(body.seasons));
+            expect(body[0]).toHaveProperty("name");
+            expect(body[0]).toHaveProperty("id");
             expect(body[0].name).toEqual(season);
           });
       });
@@ -328,7 +331,20 @@ describe("ALL TESTS", () => {
         return request(app)
           .get(`/api/clubs/${clubId}/seasons`)
           .then(({ body }) => {
+            expect(Array.isArray(body.seasons));
+            expect(body[0]).toHaveProperty("name");
+            expect(body[0]).toHaveProperty("id");
             expect(body).toEqual(seasons);
+          });
+      });
+      test("returns an error message when an invalid club ID is passed", () => {
+        const clubId = 55;
+        const message = "Club Seasons Not Found. Club IDs range from 1-51.";
+        return request(app)
+          .get(`/api/clubs/${clubId}/seasons`)
+          .then(({ body }) => {
+            console.log(body);
+            expect(body.message).toEqual(message);
           });
       });
     });

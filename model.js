@@ -61,12 +61,6 @@ exports.fetchClubSeasons = () => {
     return clubSeasons.rows;
   });
 };
-exports.fetchSeasonsForClubsById = (clubId) => {
-  const queryString = `SELECT seasons.* FROM seasons JOIN club_seasons on seasons.id = club_seasons.season_id WHERE club_seasons.club_id = $1`;
-  return db.query(queryString, [clubId]).then((seasonsForClubs) => {
-    return seasonsForClubs.rows;
-  });
-};
 exports.fetchPlayerById = (playerId) => {
   const queryString = `SELECT * FROM players WHERE id = $1;`;
   return db.query(queryString, [playerId]).then((player) => {
@@ -80,6 +74,19 @@ exports.fetchPlayerById = (playerId) => {
     return player.rows;
   });
 };
+exports.fetchSeasonsForClubsById = (clubId) => {
+  const queryString = `SELECT seasons.* FROM seasons JOIN club_seasons on seasons.id = club_seasons.season_id WHERE club_seasons.club_id = $1`;
+  return db.query(queryString, [clubId]).then((seasonsForClubs) => {
+    if (seasonsForClubs.rows.length === 0) {
+      return Promise.reject({
+        status: 404,
+        message: "Club Seasons Not Found. Club IDs range from 1-51.",
+      });
+    }
+    return seasonsForClubs.rows;
+  });
+};
+
 exports.fetchCareerEntriesBySeasonId = (seasonId) => {
   const queryString = `SELECT * FROM career_entries WHERE season_id = $1;`;
   return db.query(queryString, [seasonId]).then((careerEntries) => {
