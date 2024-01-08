@@ -1,6 +1,4 @@
-const { promises } = require("supertest/lib/test");
 const db = require("./connection");
-const { getPlayers } = require("./controller");
 const { players } = require("./data");
 
 exports.fetchSeasons = () => {
@@ -88,45 +86,6 @@ exports.fetchSeasonsForClubsById = (clubId) => {
   });
 };
 
-exports.fetchCareerEntriesBySeasonId = (seasonId) => {
-  const queryString = `SELECT * FROM career_entries WHERE season_id = $1;`;
-  return db.query(queryString, [seasonId]).then((careerEntries) => {
-    if (seasonId > 32) {
-      return Promise.reject({
-        status: 404,
-        message: "Career Entries Not Found. Season IDs range from 1-32.",
-      });
-    }
-    if (careerEntries.rows.length === 0) {
-      return Promise.reject({
-        status: 404,
-        message:
-          "Career Entries Not Found. Sorry, this data is under construction!",
-      });
-    }
-    return careerEntries.rows;
-  });
-};
-exports.fetchCareerEntriesBySeasonIdAndClubId = (seasonId, clubId) => {
-  const queryString = `SELECT * FROM career_entries WHERE season_id = $1 and club_id = $2;`;
-  return db.query(queryString, [seasonId, clubId]).then((careerEntries) => {
-    if (seasonId > 32 || clubId > 51) {
-      return Promise.reject({
-        status: 404,
-        message:
-          "Career Entries Not Found. Season IDs range from 1-32 and Club IDs range from 1-51",
-      });
-    }
-    if (careerEntries.rows.length === 0) {
-      return Promise.reject({
-        status: 404,
-        message:
-          "Career Entries Not Found. Sorry, this data is under construction!",
-      });
-    }
-    return careerEntries.rows;
-  });
-};
 exports.fetchPlayersByClubAndSeason = (seasonId, clubId) => {
   const queryString = `
     SELECT

@@ -13,11 +13,9 @@ const {
   getCareerEntries,
   getClubSeasons,
   getSeasonsForClubsById,
-  getPlayerById,
-  getCareerEntriesBySeasonId,
-  getCareerEntriesBySeasonIdAndClubId,
   getPlayersByClubAndSeason,
   getClubById,
+  getPlayerById,
   getSeasonById,
 } = require("./controller");
 
@@ -31,11 +29,6 @@ app.get("/api/career-entries", getCareerEntries);
 app.get("/api/club-seasons", getClubSeasons);
 app.get("/api/clubs/:club_id/seasons", getSeasonsForClubsById);
 app.get("/api/players/:id", getPlayerById);
-app.get("/api/career-entries/:season_id", getCareerEntriesBySeasonId);
-app.get(
-  "/api/career-entries/:season_id/:club_id",
-  getCareerEntriesBySeasonIdAndClubId
-);
 app.get(
   "/api/career-entries/:season_id/:club_id/players",
   getPlayersByClubAndSeason
