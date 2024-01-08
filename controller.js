@@ -9,6 +9,7 @@ const {
   fetchPlayersByClubAndSeason,
   fetchClubById,
   fetchSeasonById,
+  fetchPlayersByClubAndSeasonByName,
 } = require("./model");
 
 exports.getWelcomeMessage = (request, response, next) => {

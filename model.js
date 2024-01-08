@@ -117,3 +117,5 @@ exports.fetchPlayersByClubAndSeason = (seasonId, clubId) => {
     return players.rows;
   });
 };
+
+
