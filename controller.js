@@ -9,8 +9,8 @@ const {
   fetchPlayersByClubAndSeason,
   fetchClubById,
   fetchSeasonById,
-  fetchUsers,
   addUser,
+  authenticateUser,
 } = require("./model");
 
 exports.getWelcomeMessage = (request, response, next) => {
@@ -95,13 +95,6 @@ exports.getPlayersByClubAndSeason = (request, response, next) => {
     })
     .catch(next);
 };
-exports.getUsers = (request, response, next) => {
-  fetchUsers()
-    .then((usersArray) => {
-      response.status(200).send({ users: usersArray });
-    })
-    .catch(next);
-};
 
 exports.postUser = async (request, response, next) => {
   const { username, password, email } = request.body;
@@ -111,4 +104,21 @@ exports.postUser = async (request, response, next) => {
       response.status(201).send({ userData });
     })
     .catch(next);
+};
+exports.loginUser = async (request, response, next) => {
+  const { username, password } = request.body;
+
+  try {
+    const user = await authenticateUser(username, password);
+
+    if (user) {
+      response
+        .status(200)
+        .send({ message: "Login successful", username: user.username });
+    } else {
+      response.status(401).send({ message: "Invalid credentials" });
+    }
+  } catch (error) {
+    next(error);
+  }
 };

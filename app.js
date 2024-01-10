@@ -17,8 +17,8 @@ const {
   getClubById,
   getPlayerById,
   getSeasonById,
-  getUsers,
   postUser,
+  loginUser,
 } = require("./controller");
 
 app.get("/api", getWelcomeMessage);
@@ -35,8 +35,8 @@ app.get(
   "/api/career-entries/:season_id/:club_id/players",
   getPlayersByClubAndSeason
 );
-app.get("/api/users", getUsers);
-app.post("/api/users", postUser);
+app.post("/api/register", postUser);
+app.post("/api/login", loginUser);
 
 
 

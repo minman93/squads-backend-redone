@@ -1,5 +1,7 @@
 const db = require("./connection");
 const { players } = require("./data");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 exports.fetchSeasons = () => {
   const queryString = `SELECT * FROM seasons;`;
@@ -118,20 +120,30 @@ exports.fetchPlayersByClubAndSeason = (seasonId, clubId) => {
   });
 };
 
-exports.fetchUsers = () => {
-  const queryString = `SELECT * FROM users;`;
-  return db.query(queryString).then((users) => {
-    return users.rows;
-  });
-};
-exports.addUser = (username, password, email) => {
+exports.addUser = async (username, password, email) => {
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
   if (!username || !password || !email) {
     return Promise.reject({ status: 400, message: "bad request" });
   }
   const queryString = `INSERT INTO users (username, password, email) VALUES ($1, $2, $3) RETURNING *;`;
-  return db.query(queryString, [username, password, email]).then((userData) => {
-    return userData.rows;
-  });
+  return await db
+    .query(queryString, [username, hashedPassword, email])
+    .then((userData) => {
+      return userData.rows;
+    });
 };
+exports.authenticateUser = async (username, password, email) => {
+  const userQuery = `SELECT * FROM users WHERE username = $1`;
+  const user = await db
+    .query(userQuery, [username])
+    .then((response) => response.rows[0]);
+
+  if (user && (await bcrypt.compare(password, user.password))) {
+    return user;
+  } else {
+    return null;
+  }
+};
+
 
 
