@@ -9,7 +9,8 @@ const {
   fetchPlayersByClubAndSeason,
   fetchClubById,
   fetchSeasonById,
-  fetchPlayersByClubAndSeasonByName,
+  fetchUsers,
+  addUser,
 } = require("./model");
 
 exports.getWelcomeMessage = (request, response, next) => {
@@ -91,6 +92,23 @@ exports.getPlayersByClubAndSeason = (request, response, next) => {
   fetchPlayersByClubAndSeason(seasonId, clubId)
     .then((players) => {
       response.status(200).send(players);
+    })
+    .catch(next);
+};
+exports.getUsers = (request, response, next) => {
+  fetchUsers()
+    .then((usersArray) => {
+      response.status(200).send({ users: usersArray });
+    })
+    .catch(next);
+};
+
+exports.postUser = async (request, response, next) => {
+  const { username, password, email } = request.body;
+
+  await addUser(username, password, email)
+    .then((userData) => {
+      response.status(201).send({ userData });
     })
     .catch(next);
 };

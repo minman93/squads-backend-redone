@@ -118,4 +118,20 @@ exports.fetchPlayersByClubAndSeason = (seasonId, clubId) => {
   });
 };
 
+exports.fetchUsers = () => {
+  const queryString = `SELECT * FROM users;`;
+  return db.query(queryString).then((users) => {
+    return users.rows;
+  });
+};
+exports.addUser = (username, password, email) => {
+  if (!username || !password || !email) {
+    return Promise.reject({ status: 400, message: "bad request" });
+  }
+  const queryString = `INSERT INTO users (username, password, email) VALUES ($1, $2, $3) RETURNING *;`;
+  return db.query(queryString, [username, password, email]).then((userData) => {
+    return userData.rows;
+  });
+};
+
 

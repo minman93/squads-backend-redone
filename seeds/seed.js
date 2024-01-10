@@ -7,6 +7,7 @@ const seed = async ({
   players,
   careerEntries,
   clubSeasons,
+  users,
 }) => {
   try {
     await db.query(`DROP TABLE IF EXISTS career_entries CASCADE;`);
@@ -19,6 +20,8 @@ const seed = async ({
     console.log("Dropped seasons table");
     await db.query(`DROP TABLE IF EXISTS club_seasons CASCADE;`);
     console.log("Dropped club_seasons table");
+    await db.query(`DROP TABLE IF EXISTS users CASCADE;`);
+    console.log("Dropped users table");
 
     await db.query(`
       CREATE TABLE players (
@@ -67,6 +70,14 @@ const seed = async ({
         season_id INT REFERENCES seasons(id)
       );`);
     console.log("Created club_seasons table");
+
+    await db.query(` CREATE TABLE users (
+      id SERIAL PRIMARY KEY,
+      username VARCHAR(50) UNIQUE NOT NULL,
+      password VARCHAR(255) NOT NULL,
+      email VARCHAR(255) UNIQUE );`);
+
+    console.log("Created users table successfully");
 
     const insertPlayersQueryStr = format(
       "INSERT INTO players (name, dob, position, initials, nation) VALUES %L RETURNING *;",
@@ -122,6 +133,14 @@ const seed = async ({
     );
     await db.query(insertClubSeasonsQueryStr);
     console.log("Inserted club_seasons data");
+
+    const insertUsersQueryStr = format(
+      "INSERT INTO users (username, password, email) VALUES %L RETURNING *;",
+      users.map(({ username, password, email }) => [username, password, email])
+    );
+
+    await db.query(insertUsersQueryStr);
+    console.log("Inserted users data");
 
     console.log("Seed completed successfully");
   } catch (error) {

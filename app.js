@@ -17,6 +17,8 @@ const {
   getClubById,
   getPlayerById,
   getSeasonById,
+  getUsers,
+  postUser,
 } = require("./controller");
 
 app.get("/api", getWelcomeMessage);
@@ -33,6 +35,11 @@ app.get(
   "/api/career-entries/:season_id/:club_id/players",
   getPlayersByClubAndSeason
 );
+app.get("/api/users", getUsers);
+app.post("/api/users", postUser);
+
+
+
 app.use((req, res, next) => {
   res.status(404).send({ message: "Path Not Found" });
 });

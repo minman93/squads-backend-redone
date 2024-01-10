@@ -393,5 +393,37 @@ describe("ALL TESTS", () => {
       });
     });
   });
+  describe("USERS", () => {
+    describe("should return the USERS table when given a GET USERS request", () => {
+      test("returns the two test users from the users table", () => {
+        return request(app)
+          .get("/api/users")
+          .then(({ body }) => {
+            expect(body.users[0]).toHaveProperty("username");
+            expect(body.users[0]).toHaveProperty("password");
+            expect(body.users[0]).toHaveProperty("email");
+            expect(Array.isArray(body.users));
+          });
+      });
+    });
+    describe("should add a new USER to the USERS table with a simple post request", () => {
+      test("adds a USER testuser1 with a password of Password! and an email of hello@hello.com", () => {
+        const user = {
+          username: "testuser1",
+          password: "Password!",
+          email: "hello@hello.com",
+        };
+        return request(app)
+          .post("/api/users")
+          .send(user)
+          .expect(201)
+          .then(({ body }) => {
+            console.log(body.userData);
+            expect(body.userData[0].username).toBe("testuser1");
+            expect(body.userData[0].email).toBe("hello@hello.com");
+          });
+      });
+    });
+  });
 });
 
